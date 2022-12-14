@@ -42,16 +42,27 @@ public class ConexionServerFTP {
 
 		// Ficheros en el directorio actual
 		FTPFile[] files = cliente.listFiles();
-//
-//		for (int j = 0; j < files.length; j++) {
-//		// Mostrar el nombre de un fichero y tipo
-//		System.out.println(files[j].getName()+", "+files[j].getType());
-//		}	
+
+		for (int j = 0; j < files.length; j++) {
+		// Mostrar el nombre de un fichero y tipo
+		System.out.println(files[j].getName()+", "+files[j].getType());
+		}	
 		
-		buscarFicheroRuta(files);
+//		buscarFicheroRuta(files, cliente);
 		
 		
-			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// Cerrar sesión en el servidor
 		cliente.logout();
@@ -65,13 +76,13 @@ public class ConexionServerFTP {
 		
 	}
 	
-	private static void buscarFicheroRuta(FTPFile[] files) {
-		for (int i = 0; i < files.length; i++) {
-			System.out.println(files[i].getName()+"--"+files[i].getType());
-			
-			
-			
-		}
-	}
+//	private static void buscarFicheroRuta(FTPFile[] files,FTPClient cliente) {
+//		System.out.println("Directorios de la raíz.");
+//		for (FTPFile file : files) {
+//			if(file.isDirectory()) {
+//				System.out.println(file.getName()+"--"+file.getType());
+//			}
+//		}
+//	}
 
 }
