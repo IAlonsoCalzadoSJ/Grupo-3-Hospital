@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JList;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class VentanaSwingFTP extends JFrame {
 
@@ -38,6 +40,7 @@ public class VentanaSwingFTP extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 811, 542);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 128, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -45,24 +48,24 @@ public class VentanaSwingFTP extends JFrame {
 		
 		JButton btnSubir = new JButton("Subir Archivo");
 		btnSubir.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSubir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnSubir.setBounds(46, 35, 200, 54);
+		btnSubir.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		btnSubir.setBounds(46, 34, 200, 54);
 		contentPane.add(btnSubir);
 		
 		JButton btnBajar = new JButton("Bajar Archivo");
 		btnBajar.setHorizontalAlignment(SwingConstants.LEFT);
-		btnBajar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnBajar.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
 		btnBajar.setBounds(46, 98, 200, 54);
 		contentPane.add(btnBajar);
 		
 		JButton btnBorrarAr = new JButton("Borrar Archivo");
 		btnBorrarAr.setHorizontalAlignment(SwingConstants.LEFT);
-		btnBorrarAr.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnBorrarAr.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
 		btnBorrarAr.setBounds(46, 162, 200, 54);
 		contentPane.add(btnBorrarAr);
 		
 		JButton btnRenombrar = new JButton("Renombrar Archivo");
-		btnRenombrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnRenombrar.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
 		btnRenombrar.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRenombrar.setBounds(46, 226, 200, 54);
 		contentPane.add(btnRenombrar);
@@ -122,5 +125,14 @@ public class VentanaSwingFTP extends JFrame {
 		lblRutaDirActual.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblRutaDirActual.setBounds(529, 56, 221, 33);
 		contentPane.add(lblRutaDirActual);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(240, 240, 240));
+		panel.setBounds(0, 374, 309, 98);
+		contentPane.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(323, 10, 474, 79);
+		contentPane.add(panel_1);
 	}
 }
