@@ -53,17 +53,6 @@ public class ConexionServerFTP {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		// Cerrar sesión en el servidor
 		cliente.logout();
 		// Desconectarse del servidor
