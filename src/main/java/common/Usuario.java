@@ -3,25 +3,27 @@
  */
 package common;
 
+import javax.mail.internet.InternetAddress;
+
 /**
  * @author Israel
  *
  */
 public class Usuario {
-	private String string;
-	private int int1;
+	private InternetAddress[] mail;
+	private int group;
 
-	public String getString() {
-		return string;
+	public InternetAddress[] getMail() {
+		return mail;
 	}
 
-	public int getInt1() {
-		return int1;
+	public int getGroup() {
+		return group;
 	}
 
-	public Usuario(String string, int int1) {
+	public Usuario(InternetAddress[] validMail, int int1) {
 		super();
-		this.string = string;
-		this.int1 = int1;
+		this.mail = validMail;
+		this.group = int1;
 	}
 }

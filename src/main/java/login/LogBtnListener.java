@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 import common.DBConnection;
@@ -34,19 +37,25 @@ public class LogBtnListener implements ActionListener{
 		String mail = userText.getText();
 		String pass = String.valueOf(passwordText.getPassword());
 		if (!mail.isEmpty() && !pass.isEmpty()) {
-			String sql = "select correo, permisos from usuarios where correo like ? and password = sha(?);";
-			conn.crearStatement(sql);
-			conn.agregarParametroStatement(1, mail);
-			conn.agregarParametroStatement(2, pass);
-			conn.realizarConsulta();
 			try {
+				InternetAddress validMail[] =  InternetAddress.parse(mail);
+				String sql = "select correo, permisos from usuarios where correo like ? and password = sha(?);";
+				conn.crearStatement(sql);
+				conn.agregarParametroStatement(1, mail);
+				conn.agregarParametroStatement(2, pass);
+				conn.realizarConsulta();
 				if (conn.getResultado().next()) {
-					Usuario user = new Usuario(conn.getResultado().getString("correo"), conn.getResultado().getInt("permisos"));
+					Usuario user = new Usuario(validMail, conn.getResultado().getInt("permisos"));
 					new MainSelector(conn, user);
+				} else {
+					JOptionPane.showInternalMessageDialog(userText.getParent(), "No se ha encontrado esa combinacion de usuario y contraseña", "Error login", JOptionPane.WARNING_MESSAGE);
 				}
+			} catch (AddressException e2) {
+				// TODO Auto-generated catch block
+				JOptionPane.showInternalMessageDialog(userText.getParent(), "Direccion de correo no valida", "Error correo", JOptionPane.ERROR_MESSAGE);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				JOptionPane.showInternalMessageDialog(userText.getParent(), "Error accediendo a los datos de usuarios", "Error BBDD", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}

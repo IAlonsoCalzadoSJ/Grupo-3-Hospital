@@ -47,14 +47,7 @@ public class VistaLogin extends JFrame {
 		JPanel panelLogin = new JPanel();
 		panelLogin.setBackground(SystemColor.activeCaption);
 		
-		MaskFormatter mascara = null;
-		try {
-			mascara = new MaskFormatter("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		textEmail = new JFormattedTextField(mascara);
+		textEmail = new JFormattedTextField();
 		textEmail.setText("");
 		textEmail.setColumns(50);
 		
