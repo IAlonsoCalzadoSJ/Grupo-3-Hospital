@@ -63,6 +63,7 @@ public class EventoListaArchivos implements ListSelectionListener {
 						direcSelec = otroSelec;
 						vista.getLblRutaDirActual().setText("/" + direcSelec);
 						controlLista.llenarLista(lista, direcSelec);
+						modelo.setDirecSelec(direcSelec);
 					} catch (IOException e2) {
 						// TODO: handle exception
 					}
@@ -77,6 +78,8 @@ public class EventoListaArchivos implements ListSelectionListener {
 					ficSelec = fic;
 					vista.getLblRutaDirectorio().setText(fic);
 					vista.getLblRutaDirActual().setText(direcSelec + "/" + fic);
+					modelo.setFicheroSelec(ficSelec);
+					
 				}
 				vista.getLblRutaDirActual().setText(direcSelec);
 			}
