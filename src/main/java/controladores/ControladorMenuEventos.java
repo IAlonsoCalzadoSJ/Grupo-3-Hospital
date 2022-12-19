@@ -12,8 +12,6 @@ public class ControladorMenuEventos {
 	private static ConexionFtp modelo;
 	static FTPClient cliente = new FTPClient();
 	
-	
-	
 	public ControladorMenuEventos() {
 		vista = new VentanaSwingFTP();
 		modelo = new ConexionFtp();
@@ -23,16 +21,13 @@ public class ControladorMenuEventos {
 		eventos();
 	}
 
-	
-
 	private void controladorLista() {
 		ControladorLista controlLista = new ControladorLista(vista,modelo,cliente);
 	}
 
-
-
 	private void eventos() {
-		
+		//Evento Listener de Lista De Archivos
+		vista.getListArchivos().addListSelectionListener(new EventoListaArchivos(vista, cliente, modelo));
 		//Evento Boton Subir Archivo
 		
 		
