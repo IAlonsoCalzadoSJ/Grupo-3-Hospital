@@ -60,7 +60,7 @@ public class ControladorLista {
 		}
 	}
 
-	private void llenarLista(FTPFile[] files, String direcInicial) {
+	public void llenarLista(FTPFile[] files, String direcInicial) {
 		if(files == null) return;
 		
 		DefaultListModel modeloLista = new DefaultListModel();
@@ -91,6 +91,5 @@ public class ControladorLista {
 		} catch (NullPointerException e) {
 			// TODO: handle exception
 		}
-		
 	}
 }

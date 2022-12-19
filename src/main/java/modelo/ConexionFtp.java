@@ -8,7 +8,6 @@ public class ConexionFtp {
 	int puerto = 21;
 	boolean login;
 	static String direcInicial = "/";
-	
 	static String direcSelec = direcInicial;
 	static String ficheroSelec = "";
 	

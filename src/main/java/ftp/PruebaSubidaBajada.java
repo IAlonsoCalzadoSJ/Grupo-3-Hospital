@@ -24,6 +24,7 @@ public class PruebaSubidaBajada {
 		final String PASSWORD = "admin";
 
 		FTPClient cliente = new FTPClient();
+		cliente.setAutodetectUTF8(true);
 
 		try {
 			cliente.connect(SERVIDOR, PUERTO);
@@ -52,14 +53,14 @@ public class PruebaSubidaBajada {
 
 			// ---------Subir archivos----------//
 
-//		cliente.setFileType(FTP.BINARY_FILE_TYPE);
-//		
-//		String ruta = "C:/Datos/Companies.txt";
-//		BufferedInputStream buffEntrada = new BufferedInputStream(new FileInputStream(ruta));
-//
-//		cliente.storeFile("Companies.txt", buffEntrada);
-//		System.out.println("Archivo Companies.txt subido");
-//		buffEntrada.close();
+		cliente.setFileType(FTP.BINARY_FILE_TYPE);
+		
+		String ruta = "C:/Datos/ñññ.txt";
+		BufferedInputStream buffEntrada = new BufferedInputStream(new FileInputStream(ruta));
+		
+		cliente.storeFile("ñññ.txt", buffEntrada);
+		System.out.println("Archivo Companies.txt subido");
+		buffEntrada.close();
 
 			// --------Bajar Archivos----------//
 
@@ -102,16 +103,16 @@ public class PruebaSubidaBajada {
 			
 			//-------------Moverse directorio---------//
 			
-			loginSatisfactorio = cliente.changeWorkingDirectory("/Carpeta2");
-			
-			verDirectorio(cliente);
-			if(loginSatisfactorio) {
-				System.out.println("Se ha cambiado correctamente de directorio");
-			}else {
-				System.out.println("No se ha podido cambiar");
-			}
-			
-			System.out.println("Estoy en el directorio: "+cliente.printWorkingDirectory());
+//			loginSatisfactorio = cliente.changeWorkingDirectory("/Carpeta2");
+//			
+//			verDirectorio(cliente);
+//			if(loginSatisfactorio) {
+//				System.out.println("Se ha cambiado correctamente de directorio");
+//			}else {
+//				System.out.println("No se ha podido cambiar");
+//			}
+//			
+//			System.out.println("Estoy en el directorio: "+cliente.printWorkingDirectory());
 //			
 //			//Subir fichero en esta carpeta
 //			cliente.setFileType(FTP.BINARY_FILE_TYPE);
@@ -134,13 +135,13 @@ public class PruebaSubidaBajada {
 //				System.out.println("no se ha podido crear el directorio");
 //			}
 			
-			String nombreCarpetaBorrar = "CarpetaCreada";
-			loginSatisfactorio = cliente.removeDirectory(nombreCarpetaBorrar);
-			if(loginSatisfactorio) {
-				System.out.println("Borrado correctamente");
-			}else {
-				System.out.println("No se ha podido borrar");
-			}
+//			String nombreCarpetaBorrar = "CarpetaCreada";
+//			loginSatisfactorio = cliente.removeDirectory(nombreCarpetaBorrar);
+//			if(loginSatisfactorio) {
+//				System.out.println("Borrado correctamente");
+//			}else {
+//				System.out.println("No se ha podido borrar");
+//			}
 			
 			// ------------SubirCarpeta con ficheros-----------------//
 

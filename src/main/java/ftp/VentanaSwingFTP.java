@@ -127,7 +127,7 @@ public class VentanaSwingFTP extends JFrame {
 		lblUsuarioNombre.setBounds(155, 428, 120, 25);
 		contentPane.add(lblUsuarioNombre);
 		
-		JLabel lblDirectorio = new JLabel("Directorio:");
+		JLabel lblDirectorio = new JLabel("Archivo:");
 		lblDirectorio.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		lblDirectorio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDirectorio.setBounds(323, 10, 158, 34);
