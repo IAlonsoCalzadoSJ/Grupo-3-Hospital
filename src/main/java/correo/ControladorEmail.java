@@ -20,6 +20,7 @@ public void meterListeners(){
 	for(int i=0;i<e.getBotones().size();i++) {
 		e.getBotones().get(i).addActionListener(new EventoBotones(e,t,c.getSt()));
 	}
+	e.getTable().getSelectionModel().addListSelectionListener(new EventoTabla(e.getTable()));
 	
 }
 }

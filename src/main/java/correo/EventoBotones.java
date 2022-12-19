@@ -22,11 +22,7 @@ Store st;
 	public void actionPerformed(ActionEvent ev) {
 		// TODO Auto-generated method stub
 if(ev.getSource().equals(email.getBotones().get(0))) {
-	//Enviar
-	System.out.print("Envio");
-}
-else if(ev.getSource().equals(email.getBotones().get(1))) {
-	//Refrescar
+	//refresh
 	try {
 		t.todocorreo(st);
 	} catch (NoSuchProviderException e) {
@@ -40,6 +36,12 @@ else if(ev.getSource().equals(email.getBotones().get(1))) {
 		e.printStackTrace();
 	}
 	System.out.print("Refrescar");
+
+}
+else if(ev.getSource().equals(email.getBotones().get(1))) {
+	//enviar
+	System.out.print("Envio");
+	
 	
 }
 else if(ev.getSource().equals(email.getBotones().get(2))) {

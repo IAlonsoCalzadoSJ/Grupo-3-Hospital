@@ -71,14 +71,23 @@ public class Email extends JFrame {
 					.addComponent(logoLabel))
 		);
 		panelLogo.setLayout(gl_panelLogo);
-		DefaultTableModel model = new DefaultTableModel(); 
+		DefaultTableModel model = new DefaultTableModel() {
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }
+			
+		}; 
 		model.addColumn("Remitente");
 		model.addColumn("Asunto");
 		model.addColumn("Fecha/hora");
 		table = new JTable();
-		model.addRow(new Object[] {"","",""});
+	table.setDefaultEditor(Object.class, null);
+	       
 		table.setModel(model);
 		table.setFillsViewportHeight(true);
+		
 		
 		JScrollPane scrollBar = new JScrollPane(table);
 		scrollBar.setBackground(SystemColor.activeCaption);
