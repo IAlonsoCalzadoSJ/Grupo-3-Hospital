@@ -11,9 +11,11 @@ package correo;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Scanner;
 
+import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -32,8 +34,14 @@ import org.jsoup.Jsoup;
  *
  */
 public class ClienteCorreo {
-	static int msjs=0;
-	public static void main(String[] args) {
+private Store st;
+	public Store getSt() {
+	return st;
+}
+public void setSt(Store st) {
+	this.st = st;
+}
+	public   ClienteCorreo() {
 		//Properties props = new Properties( );
 		Properties prop = new Properties();
 
@@ -54,28 +62,31 @@ public class ClienteCorreo {
 		String provider = "pop3";
 		
 		try {
+			
+			Session session = Session.getDefaultInstance(prop, null);
+
+			st = session.getStore(provider);
+			st.connect(host, username, password);
+			
+			//t.todocorreo(store);
+		
+			
+			
+			
 			//			
 			//
-			while(true) {
-				Message[] m;
-				Session session = Session.getDefaultInstance(prop, null);
-				
-				Store store = session.getStore(provider);
-				store.connect(host, username, password);
-				
-				 Folder inbox = store.getFolder("INBOX");
-				if (inbox == null) {
-				System.out.println("No INBOX");
-				System.exit(1);
-				}
-				inbox.open(Folder.READ_ONLY);
-		correos(inbox);
-		String eleccion="";
-		Scanner sc= new Scanner(System.in);
-		System.out.print("Nuevos correos?");
+			//todocorreo(store);
 		
-		eleccion=sc.nextLine();
-			}
+			
+				 
+				
+		
+		//String eleccion="";
+		//Scanner sc= new Scanner(System.in);
+		//System.out.println("Nuevos correos?");
+		
+	//	eleccion=sc.nextLine();
+			
 		
 	
 		//inbox=null;
@@ -91,42 +102,9 @@ public class ClienteCorreo {
 		
 		}
 
-	private static void correos(Folder inbox)
-			throws NoSuchProviderException, MessagingException, IOException {
-if(msjs!=inbox.getMessageCount()) {
-	Message[] messages = inbox.getMessages( );
-	//System.out.println(messages.length-1);	
-		/*for (int j =0; j < 1; j++) {
-		System.out.println("---------------Message " + (j+1) + " ---------------");
-		messages[j].writeTo(System.out);
-		}*/
-		//el que recibe
-	//Address[] a=messages[messages.length-1].getAllRecipients();
-		//el que se lo ha enviado pero hay que tocar lo que devuelve
-		//Address[] a=messages[messages.length-1].getReplyTo();
-		
-		//Fecha y hora del correo
-		//Date a=messages[messages.length-1].getSentDate();
-		//Asunto del correo
-		//String a=messages[messages.length-1].getSubject();
-		Messages m= new Messages();
-		
-		/*for(int i=messages.length-1;i>0;i--) {
-		String a=m.getTextFromMessage( messages[i]);
-		i=i-30;
-		
-		
-	    System.out.print(a);
-		}*/
-		String a=m.getTextFromMessage( messages[messages.length-1]);
-		 System.out.print(a);
-		
-}
-else {
-	System.out.println("no hay na nuevo ");
-}
-		msjs=inbox.getMessageCount();
-	}
+	
+
+
 		
 	
 	
