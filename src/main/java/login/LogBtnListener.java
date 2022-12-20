@@ -48,14 +48,14 @@ public class LogBtnListener implements ActionListener{
 					Usuario user = new Usuario(validMail, conn.getResultado().getInt("permisos"));
 					new MainSelector(conn, user);
 				} else {
-					JOptionPane.showInternalMessageDialog(userText.getParent(), "No se ha encontrado esa combinacion de usuario y contraseña", "Error login", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showInternalMessageDialog(null, "No se ha encontrado esa combinacion de usuario y contraseña", "Error login", JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (AddressException e2) {
 				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(userText.getParent(), "Direccion de correo no valida", "Error correo", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, "Direccion de correo no valida", "Error correo", JOptionPane.ERROR_MESSAGE);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(userText.getParent(), "Error accediendo a los datos de usuarios", "Error BBDD", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, "Error accediendo a los datos de usuarios", "Error BBDD", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}

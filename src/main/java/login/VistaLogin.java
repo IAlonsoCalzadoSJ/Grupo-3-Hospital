@@ -2,22 +2,19 @@ package login;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.text.ParseException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
-import javax.swing.JPasswordField;
-import javax.swing.JFormattedTextField;
 
 public class VistaLogin extends JFrame {
 
@@ -142,7 +139,7 @@ public class VistaLogin extends JFrame {
 		return textPassw;
 	}
 	
-	public void setBtnSendEvent(LogBtnListener list) {
-		loginBoton.addActionListener(list);
+	public JButton getLoginBoton() {
+		return loginBoton;
 	}
 }

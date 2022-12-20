@@ -1,52 +1,36 @@
 package login;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.SystemColor;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
 
-public class Seleccion extends JFrame {
+public class VistaSelector extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3804543259665476927L;
-	private JPanel panelMain;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Seleccion frame = new Seleccion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private ArrayList<JButton> botones = new ArrayList<>();
+	
 	/**
 	 * Create the frame.
 	 */
-	public Seleccion() {
+	public VistaSelector() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 832);
-		panelMain = new JPanel();
+		JPanel panelMain = new JPanel();
 		panelMain.setBackground(SystemColor.activeCaption);
 		panelMain.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -181,5 +165,8 @@ public class Seleccion extends JFrame {
 		manualPanel.setLayout(gl_manualPanel);
 		panelMain.setLayout(gl_panelMain);
 	}
-
+	
+	public void addListeners(ListenerBtnSelector listenerBtnSelector) {
+		
+	}
 }

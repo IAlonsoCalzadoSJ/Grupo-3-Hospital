@@ -17,7 +17,7 @@ public class Login {
 		conn.crearConexion();
 		view = new VistaLogin();
 		LogBtnListener list = new LogBtnListener(conn, view.getUserText(), view.getPasswordText());
-		view.setBtnSendEvent(list);
+		view.getLoginBoton().addActionListener(list);
 		view.setVisible(true);
 	}
 }
