@@ -12,6 +12,18 @@ import javax.mail.internet.InternetAddress;
 public class Usuario {
 	private InternetAddress[] mail;
 	private int group;
+	private String doctor;
+	private boolean leerAjena;
+	private boolean modificarPropia;
+	
+	public Usuario(InternetAddress[] mail, int group, String doctor, boolean leerAjena, boolean modificarPropia) {
+		super();
+		this.mail = mail;
+		this.group = group;
+		this.doctor = doctor;
+		this.leerAjena = leerAjena;
+		this.modificarPropia = modificarPropia;
+	}
 
 	public InternetAddress[] getMail() {
 		return mail;
@@ -21,9 +33,15 @@ public class Usuario {
 		return group;
 	}
 
-	public Usuario(InternetAddress[] validMail, int int1) {
-		super();
-		this.mail = validMail;
-		this.group = int1;
+	public String getDoctor() {
+		return doctor;
+	}
+
+	public boolean isLeerAjena() {
+		return leerAjena;
+	}
+
+	public boolean isModificarPropia() {
+		return modificarPropia;
 	}
 }

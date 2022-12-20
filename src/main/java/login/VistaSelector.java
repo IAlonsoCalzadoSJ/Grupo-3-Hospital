@@ -42,22 +42,22 @@ public class VistaSelector extends JFrame {
 		JPanel mailPanel = new JPanel();
 		mailPanel.setBackground(SystemColor.activeCaption);
 		
-		JButton mailBoton = new JButton("MAIL");
-		mailBoton.setBackground(Color.ORANGE);
-		mailBoton.setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.add(new JButton("eMail"));
+		botones.get(0).setBackground(Color.ORANGE);
+		botones.get(0).setFont(new Font("Sitka Text", Font.PLAIN, 40));
 		GroupLayout gl_mailPanel = new GroupLayout(mailPanel);
 		gl_mailPanel.setHorizontalGroup(
 			gl_mailPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_mailPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(mailBoton, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
+					.addComponent(botones.get(0), GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_mailPanel.setVerticalGroup(
 			gl_mailPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_mailPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(mailBoton, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addComponent(botones.get(0), GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		mailPanel.setLayout(gl_mailPanel);
@@ -65,22 +65,22 @@ public class VistaSelector extends JFrame {
 		JPanel ftpPanel = new JPanel();
 		ftpPanel.setBackground(SystemColor.activeCaption);
 		
-		JButton manualBoton = new JButton("MANUAL");
-		manualBoton.setBackground(Color.ORANGE);
-		manualBoton.setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.add(new JButton("Manual"));
+		botones.get(1).setBackground(Color.ORANGE);
+		botones.get(1).setFont(new Font("Sitka Text", Font.PLAIN, 40));
 		GroupLayout gl_ftpPanel = new GroupLayout(ftpPanel);
 		gl_ftpPanel.setHorizontalGroup(
 			gl_ftpPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ftpPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(manualBoton, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
+					.addComponent(botones.get(1), GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_ftpPanel.setVerticalGroup(
 			gl_ftpPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_ftpPanel.createSequentialGroup()
 					.addContainerGap(43, Short.MAX_VALUE)
-					.addComponent(manualBoton, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addComponent(botones.get(1), GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		ftpPanel.setLayout(gl_ftpPanel);
@@ -125,48 +125,48 @@ public class VistaSelector extends JFrame {
 					.addComponent(ftpPanel, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE))
 		);
 		
-		JButton volverBoton = new JButton("Volver");
-		volverBoton.setBackground(Color.ORANGE);
-		volverBoton.setFont(new Font("Sitka Text", Font.PLAIN, 20));
+		botones.add(new JButton("Volver"));
+		botones.get(2).setBackground(Color.ORANGE);
+		botones.get(2).setFont(new Font("Sitka Text", Font.PLAIN, 20));
 		GroupLayout gl_volverPanel = new GroupLayout(volverPanel);
 		gl_volverPanel.setHorizontalGroup(
 			gl_volverPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_volverPanel.createSequentialGroup()
-					.addComponent(volverBoton, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+					.addComponent(botones.get(2), GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
 					.addGap(20))
 		);
 		gl_volverPanel.setVerticalGroup(
 			gl_volverPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_volverPanel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(volverBoton, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+					.addComponent(botones.get(2), GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		volverPanel.setLayout(gl_volverPanel);
 		
-		JButton ftpBoton = new JButton("FTP");
-		ftpBoton.setBackground(Color.ORANGE);
-		ftpBoton.setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.add(new JButton("FTP"));
+		botones.get(3).setBackground(Color.ORANGE);
+		botones.get(3).setFont(new Font("Sitka Text", Font.PLAIN, 40));
 		GroupLayout gl_manualPanel = new GroupLayout(manualPanel);
 		gl_manualPanel.setHorizontalGroup(
 			gl_manualPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_manualPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(ftpBoton, GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+					.addComponent(botones.get(3), GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_manualPanel.setVerticalGroup(
 			gl_manualPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_manualPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(ftpBoton, GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+					.addComponent(botones.get(3), GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		manualPanel.setLayout(gl_manualPanel);
 		panelMain.setLayout(gl_panelMain);
 	}
-	
-	public void addListeners(ListenerBtnSelector listenerBtnSelector) {
-		
+
+	public ArrayList<JButton> getBotones() {
+		return botones;
 	}
 }

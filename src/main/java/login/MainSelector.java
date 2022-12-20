@@ -12,11 +12,14 @@ import common.Usuario;
  */
 public class MainSelector {
 	
-	public MainSelector(DBConnection conn, Usuario user) {
+	public MainSelector(DBConnection conn, Usuario user, VistaLogin preview) {
 		super();
 		
 		VistaSelector view = new VistaSelector();
-		view.addListeners(new ListenerBtnSelector(conn, user));
+		ListenerBtnSelector list = new ListenerBtnSelector(conn, user, view, preview);
+		for (int i = 0; i < view.getBotones().size(); i++) {
+			view.getBotones().get(i).addActionListener(list);
+		}
 		view.setVisible(true);
 	}
 }
