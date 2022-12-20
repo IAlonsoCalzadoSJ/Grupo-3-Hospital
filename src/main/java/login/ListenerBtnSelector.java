@@ -35,11 +35,11 @@ public class ListenerBtnSelector implements ActionListener {
 		switch (((JButton) e.getSource()).getText()) {
 		case "FTP":
 			view.setVisible(false);
-//			new ControladorMenuEventos(conn, user);
+//			new ControladorMenuEventos(conn, user, view);
 			break;
 		case "eMail":
 			view.setVisible(false);
-//			new ControladorEmail(conn, user);
+//			new ControladorEmail(user, view);
 			break;
 		case "Manual":
 			view.setVisible(false);
