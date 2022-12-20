@@ -1,7 +1,7 @@
 /**
  * 
  */
-package login;
+package login.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,8 @@ import javax.swing.JButton;
 
 import common.DBConnection;
 import common.Usuario;
+import login.vistas.VistaLogin;
+import login.vistas.VistaSelector;
 
 /**
  * @author Israel

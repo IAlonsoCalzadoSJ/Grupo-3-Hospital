@@ -1,7 +1,7 @@
 /**
  * 
  */
-package login;
+package login.modelo;
 
 /**
  * @author Israel

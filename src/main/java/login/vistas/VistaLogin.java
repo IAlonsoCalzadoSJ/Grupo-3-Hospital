@@ -1,4 +1,4 @@
-package login;
+package login.vistas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
