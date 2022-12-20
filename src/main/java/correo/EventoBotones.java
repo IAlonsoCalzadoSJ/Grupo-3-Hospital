@@ -41,7 +41,7 @@ if(ev.getSource().equals(email.getBotones().get(0))) {
 else if(ev.getSource().equals(email.getBotones().get(1))) {
 	//enviar
 	System.out.print("Envio");
-	
+	Enviar e= new Enviar();
 	
 }
 else if(ev.getSource().equals(email.getBotones().get(2))) {

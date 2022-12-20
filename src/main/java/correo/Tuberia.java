@@ -48,6 +48,7 @@ public class Tuberia {
 	}
 
 	public  synchronized void correos(Folder inbox) throws NoSuchProviderException, MessagingException, IOException {
+		tiempo=0;
 		if(inbox.hasNewMessages()||inbox.getNewMessageCount()!=0||msjs==0||inbox.getMessageCount()!=msjs) {
 			DefaultTableModel model = new DefaultTableModel(); 
 			model.addColumn("Remitente");
@@ -65,7 +66,7 @@ public class Tuberia {
 				Date fecha = messages[i].getSentDate();
 				String asunto = messages[i].getSubject();
 				System.out.println(asunto + fecha + quien[0]);
-				i=i-2;
+				i=i-20;
 			}
 			e.getTable().setModel(model);
 			System.out.println(messages.length);

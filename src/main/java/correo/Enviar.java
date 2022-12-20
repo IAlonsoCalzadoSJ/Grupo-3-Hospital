@@ -1,6 +1,7 @@
 package correo;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -9,6 +10,7 @@ import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 
@@ -18,48 +20,103 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 
 public class Enviar {
+	 MimeMessage message;
+	 String remitente;
+	 String destinatario;
+	 VistaEnviar e;
+	  Session session;
+	  String claveemail;
+	  Properties props;
+	  File f= new File("");
+public Enviar() {
+	 e= new VistaEnviar();
+	e.setVisible(true);
+	
+	 for(int i=0;i<3;i++) {
+		 e.getBotones().get(i).addActionListener(new EventoBotonesEnviar(e,this)); 
+	 }
+	
+	//Viene de clase Usuario
+	
+     remitente = "miguelangelmeridamedina.sanjose@alumnado.fundacionloyola.net";
+     	
+    
+     //alvaropalacioscabrera.sanjose@alumnado.fundacionloyola.net
+  //Viene de clase Usuario
+    claveemail = "12345678";
 
-	public static void main(String[] args) {
+     props = System.getProperties();
+     
+    props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+    props.put("mail.smtp.user", remitente);
+    props.put("mail.smtp.clave", claveemail);    //La clave de la cuenta
+    props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
+    props.put("mail.smtp.starttls.enable","true"); //Para conectar de manera segura al servidor SMTP
+    props.put("mail.smtp.port","587"); //El puerto SMTP seguro de Google
+    
+     
+
+   //session = Session.getDefaultInstance(props);
+   session = Session.getInstance(props,
+           new javax.mail.Authenticator() {
+
+               protected PasswordAuthentication getPasswordAuthentication() {
+                   return new PasswordAuthentication(remitente,claveemail);
+               }
+           });
+
+  // session.setDebug(true);
+     message = new MimeMessage(session);
+     //enviar();
+}
+	public  void enviar() throws IOException {
 		// TODO Auto-generated method stub
 		 //La dirección de correo de envío
-	    String remitente = "miguelangelmeridamedina.sanjose@alumnado.fundacionloyola.net";
-	    String destinatario = "miguelangelmeridamedina.sanjose@alumnado.fundacionloyola.net";
-	    //La clave de aplicación obtenida según se explica en este artículo:
-	    String claveemail = "12345678";
-
-	    Properties props = System.getProperties();
-	    props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
-	    props.put("mail.smtp.user", remitente);
-	    props.put("mail.smtp.clave", claveemail);    //La clave de la cuenta
-	    props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-	    props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-	    props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
-
-	    Session session = Session.getDefaultInstance(props);
-	    MimeMessage message = new MimeMessage(session);
-
+		/*try {
+		InternetAddress inte=new InternetAddress(e.getFieldPara().getText());
+		}
+		catch(Exception r){
+			System.out.println("La direccion:"+e.getFieldPara().getText());
+		}*/
 	    try {
+	    	 
 	        message.setFrom(new InternetAddress(remitente));
-	        message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
-	        message.setSubject("Piston");
+	        
+	        //message.addRecipient(Message.RecipientType.TO, new InternetAddress(e.getFieldPara().getText()));   //Se podrían añadir varios de la misma manera
+	        message.setSubject(e.getFieldCabecera().getText());
+	        message.addRecipients(Message.RecipientType.TO,e.getFieldPara().getText());
 	        BodyPart texto = new MimeBodyPart();
-	        texto.setText("Texto del mensaje");	
-	        BodyPart adjunto = new MimeBodyPart();
-	        adjunto.setDataHandler(new DataHandler(new FileDataSource("C:\\datos\\fx2.jpg")));
-	        adjunto.setFileName("fx.jpg");
+	        texto.setText(e.getPaneCuerpo().getText());
 	        MimeMultipart multiParte = new MimeMultipart();
-
-	        multiParte.addBodyPart(texto);
+	        if(f.getAbsolutePath()!="") {
+	        MimeBodyPart adjunto = new MimeBodyPart();
+	        adjunto.attachFile(f);
+	        
+	       
+	     
+	        
+	       
 	        multiParte.addBodyPart(adjunto);
+	        }
+	      
+//System.out.print("detino:"+ e.getFieldPara().getText()+"cuerpo"+e.getPaneCuerpo().getText()+"subject"+e.getFieldCabecera().getText());
+	        multiParte.addBodyPart(texto);
+	    
 	        message.setContent(multiParte);
-	        Transport transport = session.getTransport("smtp");
-	        transport.connect("smtp.gmail.com", remitente, claveemail);
-	        transport.sendMessage(message, message.getAllRecipients());
+	        Transport transport =session.getTransport("smtp");
+	        transport.connect("smtp.gmail.com",remitente,claveemail);
+	        transport.sendMessage(message,message.getAllRecipients());
 	        transport.close();
 	    }
 	    catch (MessagingException me) {
 	        me.printStackTrace();   //Si se produce un error
 	    }
+	}
+	public File getF() {
+		return f;
+	}
+	public void setF(File f) {
+		this.f = f;
 	}
 
 }
