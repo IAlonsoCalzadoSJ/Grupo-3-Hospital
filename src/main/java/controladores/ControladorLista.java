@@ -27,7 +27,7 @@ public class ControladorLista {
 	}
 
 	private void eventoListaArchivos() {
-		
+		cliente.setAutodetectUTF8(true);
 		try {
 			cliente.connect(modelo.getServidor(),modelo.getPuerto());
 			

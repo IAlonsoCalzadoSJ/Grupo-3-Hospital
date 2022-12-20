@@ -28,19 +28,25 @@ public class ControladorMenuEventos {
 		//Evento Listener de Lista De Archivos del JList FTP
 		vista.getListArchivos().addListSelectionListener(new EventoListaArchivos(vista, cliente, modelo, controlLista));
 		
-		//Evento Boton Subir Archivo FTP
+		//Evento Botón Subir Archivo FTP
 		vista.getBtnSubir().addActionListener(new SubirArchivo(vista,cliente,modelo,controlLista));
 		
-		//Evento Boton Bajar Archivo FTP
+		//Evento Botón Bajar Archivo FTP
 		vista.getBtnBajar().addActionListener(new BajarArchivo(vista,cliente,modelo,controlLista));
 		
-		//Evento Boton Borrar Archivo FTP
+		//Evento Botón Borrar Archivo FTP
 		vista.getBtnBorrarAr().addActionListener(new BorrarArchivo(vista,cliente,modelo,controlLista));
+		
+		//Evento Botón Renombrar Archivo FTP
+		vista.getBtnRenombrar().addActionListener(new RenombrarArchivo(vista,cliente,modelo,controlLista));
 		
 		//Evento Boton Crear Carpeta FTP
 		vista.getBtnCrearCarpeta().addActionListener(new CrearCarpeta(vista,cliente,modelo,controlLista));
 		
-		//Evento del Botón Volver FTP
+		//Evento Botón Borrar Carpeta FTP
+		vista.getBtnBorrarCarpeta().addActionListener(new BorrarCarpeta(vista,cliente,modelo,controlLista));
+		
+		//Evento Botón Volver FTP
 		vista.getBtnVolver().addActionListener(new EventoVolver(vista,cliente));
 		
 	}

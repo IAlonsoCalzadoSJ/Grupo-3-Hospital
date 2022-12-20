@@ -76,17 +76,17 @@ public class PruebaSubidaBajada {
 
 			// ------------Renombrar-----------//
 
-//		cliente.setFileType(FTP.BINARY_FILE_TYPE);
-//		String antiguo = "gato.jpeg";
-//		String nuevo = "GatoFeo.jpeg";
-//		
-//		boolean success = cliente.rename(antiguo, nuevo);
-//		
-//		if(success) {
-//			System.out.println(antiguo+" Modificado correctamente");
-//		}else {
-//			System.out.println("No se ha podido modificar");
-//		}
+		cliente.setFileType(FTP.BINARY_FILE_TYPE);
+		String antiguo = "gato.jpeg";
+		String nuevo = "GatoFeo.jpeg";
+		
+		boolean success = cliente.rename(antiguo, nuevo);
+		
+		if(success) {
+			System.out.println(antiguo+" Modificado correctamente");
+		}else {
+			System.out.println("No se ha podido modificar");
+		}
 
 			// -----------Borrar Archivo-------//
 
