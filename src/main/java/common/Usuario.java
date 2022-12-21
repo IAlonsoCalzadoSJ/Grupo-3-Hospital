@@ -10,22 +10,24 @@ import javax.mail.internet.InternetAddress;
  *
  */
 public class Usuario {
-	private InternetAddress[] mail;
+	private String mail;
 	private int group;
 	private String doctor;
 	private boolean leerAjena;
 	private boolean modificarPropia;
+	private String password;
 	
-	public Usuario(InternetAddress[] mail, int group, String doctor, boolean leerAjena, boolean modificarPropia) {
+	public Usuario(String mail, int group, String doctor, boolean leerAjena, boolean modificarPropia, String password) {
 		super();
 		this.mail = mail;
 		this.group = group;
 		this.doctor = doctor;
 		this.leerAjena = leerAjena;
 		this.modificarPropia = modificarPropia;
+		this.password =  password;
 	}
 
-	public InternetAddress[] getMail() {
+	public String getMail() {
 		return mail;
 	}
 
@@ -43,5 +45,9 @@ public class Usuario {
 
 	public boolean isModificarPropia() {
 		return modificarPropia;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }

@@ -43,9 +43,9 @@ public class LogBtnListener implements ActionListener {
 				conn.agregarParametroStatement(2, pass);
 				conn.realizarConsulta();
 				if (conn.getResultado().next()) {
-					Usuario user = new Usuario(validMail, conn.getResultado().getInt("permisos"),
+					Usuario user = new Usuario(mail, conn.getResultado().getInt("permisos"),
 							conn.getResultado().getString("doctor"), conn.getResultado().getBoolean("leer_ajena"),
-							conn.getResultado().getBoolean("modificar_propia"));
+							conn.getResultado().getBoolean("modificar_propia"), pass);
 					view.setVisible(false);
 					new MainSelector(conn, user, view);
 				} else {
@@ -62,6 +62,10 @@ public class LogBtnListener implements ActionListener {
 				JOptionPane.showInternalMessageDialog(null, "Error accediendo a los datos de usuarios", "Error BBDD",
 						JOptionPane.WARNING_MESSAGE);
 			}
+		} else {
+			JOptionPane.showInternalMessageDialog(null,
+					"No se permiten campos vacios en usuario o contraseña", "Error login",
+					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 }
