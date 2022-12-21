@@ -79,7 +79,7 @@ public class Tuberia {
 					 a=quien[j].toString();
 					if(a.contains("<")||a.contains(">")) {
 					a=a.substring(a.indexOf("<")+1,a.indexOf(">"));
-					System.out.print(a+"Imprimo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+					
 					}
 				}
 				Date fecha = messages[i].getSentDate();

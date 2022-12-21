@@ -105,6 +105,7 @@ public class VistaEnviar extends JFrame {
 		);
 		
 		JTextPane txtpnWindowUsedTo = new JTextPane();
+		txtpnWindowUsedTo.setEditable(false);
 		txtpnWindowUsedTo.setFont(new Font("Sitka Text", Font.PLAIN, 15));
 		txtpnWindowUsedTo.setText("Window used to send mails.\r\nPressing the \"Go back\" button will lead you to the previous window.\r\nPressing the \"Attach file\" button will allow you to attach files to the mail you want to send.\r\nPressing the \"Send\" button will send the mail once the required info has been written.");
 		txtpnWindowUsedTo.setBackground(SystemColor.activeCaption);
