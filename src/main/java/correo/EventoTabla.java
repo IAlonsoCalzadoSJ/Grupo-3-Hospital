@@ -17,7 +17,7 @@ JTable t;
 	public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
 		
-		 System.out.println(t.getValueAt(t.getSelectedRow(), 0).toString());	
+		 System.out.println(t.getValueAt(t.getSelectedRow(), 0).toString()+"");	
 	}
 
 	

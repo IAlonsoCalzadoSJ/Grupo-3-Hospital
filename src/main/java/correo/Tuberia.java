@@ -86,16 +86,19 @@ public class Tuberia {
 				if(!a.equals("")) {
 				System.out.println(asunto + fecha + a);
 				model.addRow(new Object[] {a,messages[i].getSubject(),messages[i].getSentDate()});
+				e.getTable().setModel(model);
+				
 				}
 				else {
 					System.out.println(asunto + fecha + quien[0]);
 				model.addRow(new Object[] {messages[i].getFrom()[0],messages[i].getSubject(),messages[i].getSentDate()});
+				e.getTable().setModel(model);
 				}
 				
 				i=i;
 			
 			}
-			e.getTable().setModel(model);
+			
 			System.out.println(messages.length);
 		
 		}
