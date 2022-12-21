@@ -16,6 +16,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import login.modelo.ModeloLoginSelector;
+
 public class VistaLogin extends JFrame {
 
 	/**
@@ -48,21 +50,21 @@ public class VistaLogin extends JFrame {
 		textEmail.setText("");
 		textEmail.setColumns(50);
 		
-		JLabel loginEmail = new JLabel("Email:");
-		loginEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel loginEmail = new JLabel(ModeloLoginSelector.getTxtemail());
+		loginEmail.setFont(new Font(ModeloLoginSelector.getCfgfuentevistalogin(), Font.PLAIN, 20));
 		loginEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
-		loginBoton = new JButton("Log-in");
+		loginBoton = new JButton(ModeloLoginSelector.getTxtlogin());
 		loginBoton.setBackground(Color.WHITE);
-		loginBoton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		loginBoton.setFont(new Font(ModeloLoginSelector.getCfgfuentevistalogin(), Font.PLAIN, 20));
 		
 		textPassw = new JPasswordField();
 		textPassw.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("Password:");
+		JLabel lblPassword = new JLabel(ModeloLoginSelector.getTxtpassword());
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPassword.setFont(new Font(ModeloLoginSelector.getCfgfuentevistalogin(), Font.PLAIN, 20));
 		GroupLayout gl_panelLogin = new GroupLayout(panelLogin);
 		gl_panelLogin.setHorizontalGroup(
 			gl_panelLogin.createParallelGroup(Alignment.LEADING)

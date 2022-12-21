@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import common.DBConnection;
 import common.Usuario;
 import login.controladores.MainSelector;
+import login.modelo.ModeloLoginSelector;
 import login.vistas.VistaLogin;
 
 /**
@@ -37,7 +38,9 @@ public class LogBtnListener implements ActionListener {
 		if (!mail.isEmpty() && !pass.isEmpty()) {
 			try {
 				InternetAddress validMail[] = InternetAddress.parse(mail);
-				String sql = "select u.correo, u.permisos, u.doctor, p.leer_ajena, p.modificar_propia from usuarios as u inner join permisos as p on u.permisos = p.id where correo like ? and password = sha(?);";
+				String sql = "select u.correo, u.permisos, u.doctor, p.leer_ajena, p.modificar_propia "
+						+ "from usuarios as u inner join permisos as p on u.permisos = p.id "
+						+ "where correo like ? and password = sha(?);";
 				conn.crearStatement(sql);
 				conn.agregarParametroStatement(1, mail);
 				conn.agregarParametroStatement(2, pass);
@@ -49,23 +52,21 @@ public class LogBtnListener implements ActionListener {
 					view.setVisible(false);
 					new MainSelector(conn, user, view);
 				} else {
-					JOptionPane.showInternalMessageDialog(null,
-							"No se ha encontrado esa combinacion de usuario y contraseña", "Error login",
-							JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrloginnousuariotexto(),
+							ModeloLoginSelector.getErrloginnousuariotitulo(), JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (AddressException e2) {
 				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(null, "Direccion de correo no valida", "Error correo",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrlogincorreoerroneotexto(),
+						ModeloLoginSelector.getErrlogincorreoerroneotitulo(), JOptionPane.ERROR_MESSAGE);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(null, "Error accediendo a los datos de usuarios", "Error BBDD",
-						JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrloginbdtexto(),
+						ModeloLoginSelector.getErrloginbdtitulo(), JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
-			JOptionPane.showInternalMessageDialog(null,
-					"No se permiten campos vacios en usuario o contraseña", "Error login",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrloginnotexttexto(),
+					ModeloLoginSelector.getErrloginnousuariotitulo(), JOptionPane.WARNING_MESSAGE);
 		}
 	}
 }
