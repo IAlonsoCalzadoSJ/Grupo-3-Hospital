@@ -1,39 +1,32 @@
 package ftp;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import modelo.ConexionFtp;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Rectangle;
-
-import javax.swing.JList;
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.ImageIcon;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-
-import javax.swing.Action;
-
 public class VentanaSwingFTP extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6190453287526537347L;
 	private JPanel contentPane;
-	private JButton btnSubir, btnBajar, btnBorrarAr, btnRenombrar, btnCrearCarpeta, btnBorrarCarpeta, btnVolver;
 	private JLabel lblIpServer, lblUsuarioNombre, lblRutaDirectorio, lblRutaDirActual;
 	private JList listArchivos;
 	private ConexionFtp modelo = new ConexionFtp();
+	private ArrayList<JButton> botones = new ArrayList<>();
 	
 	/**
 	 * Launch the application.
@@ -65,51 +58,51 @@ public class VentanaSwingFTP extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnSubir = new JButton(modelo.getTextoSubir());
-		btnSubir.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/subir.png")));
-		btnSubir.setForeground(new Color(0, 0, 0));
-		btnSubir.setBackground(new Color(240, 240, 240));
-		btnSubir.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSubir.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
-		btnSubir.setBounds(46, 34, 229, 54);
-		contentPane.add(btnSubir);
+		botones.add(new JButton(modelo.getTextoSubir()));
+		botones.get(0).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/subir.png")));
+		botones.get(0).setForeground(new Color(0, 0, 0));
+		botones.get(0).setBackground(new Color(240, 240, 240));
+		botones.get(0).setHorizontalAlignment(SwingConstants.LEFT);
+		botones.get(0).setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		botones.get(0).setBounds(46, 34, 229, 54);
+		contentPane.add(botones.get(0));
 		
-		btnBajar = new JButton(modelo.getTextoBajar());
-		btnBajar.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/bajar.png")));
-		btnBajar.setBackground(new Color(240, 240, 240));
-		btnBajar.setHorizontalAlignment(SwingConstants.LEFT);
-		btnBajar.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
-		btnBajar.setBounds(46, 98, 229, 54);
-		contentPane.add(btnBajar);
+		botones.add(new JButton(modelo.getTextoBajar()));
+		botones.get(1).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/bajar.png")));
+		botones.get(1).setBackground(new Color(240, 240, 240));
+		botones.get(1).setHorizontalAlignment(SwingConstants.LEFT);
+		botones.get(1).setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		botones.get(1).setBounds(46, 98, 229, 54);
+		contentPane.add(botones.get(1));
 		
-		btnBorrarAr = new JButton(modelo.getTextoBorrar());
-		btnBorrarAr.setIconTextGap(1);
-		btnBorrarAr.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/borrar.png")));
-		btnBorrarAr.setBackground(new Color(240, 240, 240));
-		btnBorrarAr.setHorizontalAlignment(SwingConstants.LEFT);
-		btnBorrarAr.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
-		btnBorrarAr.setBounds(46, 162, 229, 54);
-		contentPane.add(btnBorrarAr);
+		botones.add(new JButton(modelo.getTextoBorrar()));
+		botones.get(2).setIconTextGap(1);
+		botones.get(2).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/borrar.png")));
+		botones.get(2).setBackground(new Color(240, 240, 240));
+		botones.get(2).setHorizontalAlignment(SwingConstants.LEFT);
+		botones.get(2).setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		botones.get(2).setBounds(46, 162, 229, 54);
+		contentPane.add(botones.get(2));
 		
-		btnRenombrar = new JButton(modelo.getTextoRenombrar());
-		btnRenombrar.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/renombrar.png")));
-		btnRenombrar.setBackground(new Color(240, 240, 240));
-		btnRenombrar.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
-		btnRenombrar.setHorizontalAlignment(SwingConstants.LEFT);
-		btnRenombrar.setBounds(46, 226, 229, 54);
-		contentPane.add(btnRenombrar);
+		botones.add(new JButton(modelo.getTextoRenombrar()));
+		botones.get(3).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/renombrar.png")));
+		botones.get(3).setBackground(new Color(240, 240, 240));
+		botones.get(3).setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		botones.get(3).setHorizontalAlignment(SwingConstants.LEFT);
+		botones.get(3).setBounds(46, 226, 229, 54);
+		contentPane.add(botones.get(3));
 		
-		btnCrearCarpeta = new JButton("");
-		btnCrearCarpeta.setBackground(new Color(240, 240, 240));
-		btnCrearCarpeta.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/crearCarpeta.png")));
-		btnCrearCarpeta.setBounds(46, 300, 91, 54);
-		contentPane.add(btnCrearCarpeta);
+		botones.add(new JButton(""));
+		botones.get(4).setBackground(new Color(240, 240, 240));
+		botones.get(4).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/crearCarpeta.png")));
+		botones.get(4).setBounds(46, 300, 91, 54);
+		contentPane.add(botones.get(4));
 		
-		btnBorrarCarpeta = new JButton("");
-		btnBorrarCarpeta.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/borrarCarpeta.png")));
-		btnBorrarCarpeta.setBackground(new Color(240, 240, 240));
-		btnBorrarCarpeta.setBounds(184, 300, 91, 54);
-		contentPane.add(btnBorrarCarpeta);
+		botones.add(new JButton(""));
+		botones.get(5).setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/borrarCarpeta.png")));
+		botones.get(5).setBackground(new Color(240, 240, 240));
+		botones.get(5).setBounds(184, 300, 91, 54);
+		contentPane.add(botones.get(5));
 		
 		JLabel lblServidor = new JLabel(modelo.getTextoServidor());
 		lblServidor.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
@@ -171,69 +164,13 @@ public class VentanaSwingFTP extends JFrame {
 		panel_1.setBounds(323, 10, 474, 79);
 		contentPane.add(panel_1);
 		
-		btnVolver = new JButton(modelo.getTextoVolver());
-		btnVolver.setBackground(new Color(240, 240, 240));
-		btnVolver.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-		btnVolver.setBounds(485, 463, 85, 32);
-		contentPane.add(btnVolver);
+		botones.add(new JButton(modelo.getTextoVolver()));
+		botones.get(6).setBackground(new Color(240, 240, 240));
+		botones.get(6).setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		botones.get(6).setBounds(485, 463, 85, 32);
+		contentPane.add(botones.get(6));
 	}
-
-	public JButton getBtnSubir() {
-		return btnSubir;
-	}
-
-	public void setBtnSubir(JButton btnSubir) {
-		this.btnSubir = btnSubir;
-	}
-
-	public JButton getBtnBajar() {
-		return btnBajar;
-	}
-
-	public void setBtnBajar(JButton btnBajar) {
-		this.btnBajar = btnBajar;
-	}
-
-	public JButton getBtnBorrarAr() {
-		return btnBorrarAr;
-	}
-
-	public void setBtnBorrarAr(JButton btnBorrarAr) {
-		this.btnBorrarAr = btnBorrarAr;
-	}
-
-	public JButton getBtnRenombrar() {
-		return btnRenombrar;
-	}
-
-	public void setBtnRenombrar(JButton btnRenombrar) {
-		this.btnRenombrar = btnRenombrar;
-	}
-
-	public JButton getBtnCrearCarpeta() {
-		return btnCrearCarpeta;
-	}
-
-	public void setBtnCrearCarpeta(JButton btnCrearCarpeta) {
-		this.btnCrearCarpeta = btnCrearCarpeta;
-	}
-
-	public JButton getBtnBorrarCarpeta() {
-		return btnBorrarCarpeta;
-	}
-
-	public void setBtnBorrarCarpeta(JButton btnBorrarCarpeta) {
-		this.btnBorrarCarpeta = btnBorrarCarpeta;
-	}
-
-	public JButton getBtnVolver() {
-		return btnVolver;
-	}
-
-	public void setBtnVolver(JButton btnVolver) {
-		this.btnVolver = btnVolver;
-	}
-
+	
 	public JLabel getLblIpServer() {
 		return lblIpServer;
 	}
@@ -272,6 +209,10 @@ public class VentanaSwingFTP extends JFrame {
 
 	public void setListArchivos(JList listArchivos) {
 		this.listArchivos = listArchivos;
+	}
+
+	public ArrayList<JButton> getBotones() {
+		return botones;
 	} 
 	
 	
