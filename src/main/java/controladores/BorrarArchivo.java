@@ -18,8 +18,7 @@ public class BorrarArchivo implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
-	
-	
+
 	public BorrarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
 		this.cliente = cliente;
 		this.vista = vista;
@@ -29,27 +28,27 @@ public class BorrarArchivo implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		String directorio = modelo.getDirecSelec();
-		if(!modelo.getDirecSelec().equals("/")) {
+		if (!modelo.getDirecSelec().equals("/")) {
 			directorio = directorio;
 		}
-		if(!modelo.getFicheroSelec().equals("")) {
-			BorrarFichero(directorio+modelo.getFicheroSelec(),modelo.getFicheroSelec());
-			modelo.setFicheroSelec("");
+		if (!modelo.getFicheroSelec().equals("")) {
+			BorrarFichero(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
 		}
 	}
 
 	private void BorrarFichero(String fichero, String nombreFichero) {
-		int eleccion = JOptionPane.showConfirmDialog(vista, "¿Seguro que quiere eliminar este fichero?");
-		if(eleccion == JOptionPane.OK_OPTION) {
+		int eleccion = JOptionPane.showConfirmDialog(vista, "¿Seguro que quiere eliminar el fichero "+nombreFichero+"?");
+		if (eleccion == JOptionPane.OK_OPTION) {
 			try {
-				if(cliente.deleteFile(nombreFichero)) {
-					JOptionPane.showMessageDialog(vista, "Archivo "+nombreFichero+" Borrado Correctamente");
+				if (cliente.deleteFile(nombreFichero)) {
+					JOptionPane.showMessageDialog(vista, "Archivo " + nombreFichero + " Borrado Correctamente.");
 					cliente.changeWorkingDirectory(modelo.getDirecSelec());
 					FTPFile[] lista = null;
 					lista = cliente.listFiles();
 					controlLista.llenarLista(lista, modelo.getDirecSelec());
-				}else {
-					JOptionPane.showMessageDialog(vista, "No se ha podido borrar el archivo "+nombreFichero);
+					modelo.setFicheroSelec("");
+				} else {
+					JOptionPane.showMessageDialog(vista, "No se ha podido borrar el archivo " + nombreFichero + ".");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

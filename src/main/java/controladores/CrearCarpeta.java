@@ -46,7 +46,9 @@ public class CrearCarpeta implements ActionListener {
 			} catch (IOException e2) {
 				e2.printStackTrace();
 			}
-		}	
+		}else {
+			JOptionPane.showMessageDialog(vista, "Introduce un nombre válido");
+		}
 		
 	}
 

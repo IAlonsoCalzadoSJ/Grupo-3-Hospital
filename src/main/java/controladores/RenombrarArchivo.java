@@ -41,8 +41,8 @@ public class RenombrarArchivo implements ActionListener {
 	}
 
 	private void renombrarArchivo(String string, String ficheroSelec) {
-		String nombreNuevo = JOptionPane.showInputDialog(vista,"Escribe nombre nuevo de fichero");
-		if(!(nombreNuevo == null)) {
+		String nombreNuevo = JOptionPane.showInputDialog(null,"Escribe nombre nuevo de fichero");
+		if(!(nombreNuevo.isEmpty())) {
 			try {
 				nombreNuevo.trim();
 				cliente.setFileType(FTP.BINARY_FILE_TYPE);
@@ -54,12 +54,14 @@ public class RenombrarArchivo implements ActionListener {
 					lista = cliente.listFiles();
 					controlLista.llenarLista(lista, modelo.getDirecSelec());
 				}else {
-					JOptionPane.showMessageDialog(vista, "No se ha podido renombrar el archivo "+ficheroSelec);
+					JOptionPane.showMessageDialog(null, "No se ha podido renombrar el archivo "+ficheroSelec);
 				}
 				
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
+		}else {
+			JOptionPane.showMessageDialog(vista, "Debes introducir un nombre válido");
 		}
 		
 	}

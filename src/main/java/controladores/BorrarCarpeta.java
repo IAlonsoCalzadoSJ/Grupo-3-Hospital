@@ -30,24 +30,25 @@ public class BorrarCarpeta implements ActionListener {
 		String nombreCarpeta = JOptionPane.showInputDialog(vista,"Introduce nombre de carpeta a borrar");
 		if(!(nombreCarpeta == null)) {
 			String directorio = modelo.getDirecSelec();
-						if(!modelo.getDirecSelec().equals("/")) 
+				if(!modelo.getDirecSelec().equals("/")) 
 				directorio = directorio+"/";
 				
 			directorio += nombreCarpeta.trim();
 			try {
-				cliente.changeToParentDirectory();
-				if(cliente.removeDirectory(modelo.getDirecSelec())) {
-					JOptionPane.showMessageDialog(vista, "Carpeta Borrada Correctamente");
+				if(cliente.removeDirectory(directorio)) {
+					JOptionPane.showMessageDialog(vista, "Carpeta "+nombreCarpeta+" Borrada Correctamente");
 					cliente.changeWorkingDirectory(modelo.getDirecSelec());
 					FTPFile[] lista = null;
 					lista = cliente.listFiles();
 					controlLista.llenarLista(lista, modelo.getDirecSelec());
 				}else {
-					JOptionPane.showMessageDialog(vista, "No se ha podido borrar la carpeta");
+					JOptionPane.showMessageDialog(vista, nombreCarpeta+" Contiene archivos, borralos");
 				}
 			} catch (IOException e2) {
 				e2.printStackTrace();
 			}
+		}else {
+			JOptionPane.showMessageDialog(vista, "Debes introducir nombre válido");
 		}
 		
 	}

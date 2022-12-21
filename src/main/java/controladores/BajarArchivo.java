@@ -35,12 +35,13 @@ public class BajarArchivo implements ActionListener {
 		String directorio = modelo.getDirecSelec();
 		if (!modelo.getDirecSelec().equals("/")) {
 			directorio = directorio + "/";
-		};
+		}
+		;
 
 		if (!modelo.getFicheroSelec().equals("")) {
 			bajarArchivo(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
-			modelo.setFicheroSelec("");
-		};
+		}
+		;
 
 	}
 
@@ -61,9 +62,10 @@ public class BajarArchivo implements ActionListener {
 				cliente.setFileType(FTP.BINARY_FILE_TYPE);
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(destino));
 				if (cliente.retrieveFile(nombreFichero, out)) {
-					JOptionPane.showMessageDialog(null, nombreFichero + " Se ha descargado");
+					JOptionPane.showMessageDialog(null, nombreFichero + " Se ha descargado.");
+					modelo.setFicheroSelec("");
 				} else {
-					JOptionPane.showMessageDialog(null, nombreFichero + " No se ha podido descargar");
+					JOptionPane.showMessageDialog(null, nombreFichero + " No se ha podido descargar.");
 				}
 				out.close();
 			} catch (IOException e) {
