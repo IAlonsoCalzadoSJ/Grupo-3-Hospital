@@ -43,7 +43,7 @@ public class BorrarArchivo implements ActionListener {
 		if(eleccion == JOptionPane.OK_OPTION) {
 			try {
 				if(cliente.deleteFile(nombreFichero)) {
-					JOptionPane.showMessageDialog(vista, "Archivo Borrado Correctamente");
+					JOptionPane.showMessageDialog(vista, "Archivo "+nombreFichero+" Borrado Correctamente");
 					cliente.changeWorkingDirectory(modelo.getDirecSelec());
 					FTPFile[] lista = null;
 					lista = cliente.listFiles();

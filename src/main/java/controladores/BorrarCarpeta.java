@@ -49,7 +49,7 @@ public class BorrarCarpeta implements ActionListener {
 				e2.printStackTrace();
 			}
 		}
-		JOptionPane.showMessageDialog(vista, "Debe introducir un Nombre válido");
+		
 	}
 
 }
