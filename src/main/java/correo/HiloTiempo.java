@@ -18,7 +18,7 @@ public class HiloTiempo extends Thread {
 	public void run() {
 		try {
 			t.todocorreo(store);
-			while (true) {
+			while (t.isVivo()) {
 				try {
 					sleep(1000);
 					System.out.print(t.tiempo+"s");
@@ -41,6 +41,9 @@ public class HiloTiempo extends Thread {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
+
+
 
 }

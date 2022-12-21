@@ -26,6 +26,8 @@ import javax.mail.Store;
 import javax.mail.internet.MimeMultipart;
 import org.jsoup.Jsoup;
 
+import common.Usuario;
+
 
 
 
@@ -34,6 +36,7 @@ import org.jsoup.Jsoup;
  *
  */
 public class ClienteCorreo {
+	Usuario u;
 private Store st;
 	public Store getSt() {
 	return st;
@@ -41,7 +44,8 @@ private Store st;
 public void setSt(Store st) {
 	this.st = st;
 }
-	public   ClienteCorreo() {
+	public   ClienteCorreo(Usuario u) {
+		this.u=u;
 		//Properties props = new Properties( );
 		Properties prop = new Properties();
 

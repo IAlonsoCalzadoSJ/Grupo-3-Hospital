@@ -19,6 +19,15 @@ public class Tuberia {
 	Folder inbox2;
 	Email e;
 	Store st;
+	boolean vivo=true;
+
+	public boolean isVivo() {
+		return vivo;
+	}
+
+	public void setVivo(boolean vivo) {
+		this.vivo = vivo;
+	}
 
 	public Store getSt() {
 		return st;
@@ -61,12 +70,30 @@ public class Tuberia {
 			Message[] messages = inbox.getMessages();
 
 			for (int i = messages.length - 1; i > 0; i--) {
-				model.addRow(new Object[] {messages[i].getFrom()[0],messages[i].getSubject(),messages[i].getSentDate()});
+				String a="";
+				
 				Address[] quien = messages[i].getFrom();
+				
+				for(int j=0;j<quien.length;j++) {
+					 a=quien[j].toString();
+					if(a.contains("<")||a.contains(">")) {
+					a=a.substring(a.indexOf("<")+1,a.indexOf(">"));
+					System.out.print(a+"Imprimo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+					}
+				}
 				Date fecha = messages[i].getSentDate();
 				String asunto = messages[i].getSubject();
-				System.out.println(asunto + fecha + quien[0]);
-				i=i-20;
+				if(!a.equals("")) {
+				System.out.println(asunto + fecha + a);
+				model.addRow(new Object[] {a,messages[i].getSubject(),messages[i].getSentDate()});
+				}
+				else {
+					System.out.println(asunto + fecha + quien[0]);
+				model.addRow(new Object[] {messages[i].getFrom()[0],messages[i].getSubject(),messages[i].getSentDate()});
+				}
+				
+				i=i;
+			
 			}
 			e.getTable().setModel(model);
 			System.out.println(messages.length);

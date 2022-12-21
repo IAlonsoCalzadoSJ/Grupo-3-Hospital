@@ -16,6 +16,9 @@ import javax.mail.Transport;
 
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+
+import common.Usuario;
+
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 
@@ -27,8 +30,10 @@ public class Enviar {
 	  Session session;
 	  String claveemail;
 	  Properties props;
+	  Usuario u;
 	  File f= new File("");
-public Enviar() {
+public Enviar(Usuario u) {
+	this.u=u;
 	 e= new VistaEnviar();
 	e.setVisible(true);
 	
@@ -38,12 +43,12 @@ public Enviar() {
 	
 	//Viene de clase Usuario
 	
-     remitente = "miguelangelmeridamedina.sanjose@alumnado.fundacionloyola.net";
+     remitente = u.getMail();
      	
     
      //alvaropalacioscabrera.sanjose@alumnado.fundacionloyola.net
   //Viene de clase Usuario
-    claveemail = "12345678";
+    claveemail = u.getPassword();
 
      props = System.getProperties();
      
