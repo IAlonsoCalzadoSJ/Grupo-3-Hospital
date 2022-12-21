@@ -34,6 +34,7 @@ public class BorrarArchivo implements ActionListener {
 		}
 		if(!modelo.getFicheroSelec().equals("")) {
 			BorrarFichero(directorio+modelo.getFicheroSelec(),modelo.getFicheroSelec());
+			modelo.setFicheroSelec("");
 		}
 	}
 

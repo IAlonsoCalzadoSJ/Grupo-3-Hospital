@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.ConexionFtp;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -20,6 +23,8 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
 import javax.swing.Action;
 
 public class VentanaSwingFTP extends JFrame {
@@ -28,6 +33,7 @@ public class VentanaSwingFTP extends JFrame {
 	private JButton btnSubir, btnBajar, btnBorrarAr, btnRenombrar, btnCrearCarpeta, btnBorrarCarpeta, btnVolver;
 	private JLabel lblIpServer, lblUsuarioNombre, lblRutaDirectorio, lblRutaDirActual;
 	private JList listArchivos;
+	private ConexionFtp modelo = new ConexionFtp();
 	
 	/**
 	 * Launch the application.
@@ -59,7 +65,7 @@ public class VentanaSwingFTP extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnSubir = new JButton("Subir Archivo");
+		btnSubir = new JButton(modelo.getTextoSubir());
 		btnSubir.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/subir.png")));
 		btnSubir.setForeground(new Color(0, 0, 0));
 		btnSubir.setBackground(new Color(240, 240, 240));
@@ -68,7 +74,7 @@ public class VentanaSwingFTP extends JFrame {
 		btnSubir.setBounds(46, 34, 229, 54);
 		contentPane.add(btnSubir);
 		
-		btnBajar = new JButton("Bajar Archivo");
+		btnBajar = new JButton(modelo.getTextoBajar());
 		btnBajar.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/bajar.png")));
 		btnBajar.setBackground(new Color(240, 240, 240));
 		btnBajar.setHorizontalAlignment(SwingConstants.LEFT);
@@ -76,7 +82,7 @@ public class VentanaSwingFTP extends JFrame {
 		btnBajar.setBounds(46, 98, 229, 54);
 		contentPane.add(btnBajar);
 		
-		btnBorrarAr = new JButton("Borrar Archivo");
+		btnBorrarAr = new JButton(modelo.getTextoBorrar());
 		btnBorrarAr.setIconTextGap(1);
 		btnBorrarAr.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/borrar.png")));
 		btnBorrarAr.setBackground(new Color(240, 240, 240));
@@ -85,7 +91,7 @@ public class VentanaSwingFTP extends JFrame {
 		btnBorrarAr.setBounds(46, 162, 229, 54);
 		contentPane.add(btnBorrarAr);
 		
-		btnRenombrar = new JButton("Renombrar ");
+		btnRenombrar = new JButton(modelo.getTextoRenombrar());
 		btnRenombrar.setIcon(new ImageIcon(VentanaSwingFTP.class.getResource("/images/renombrar.png")));
 		btnRenombrar.setBackground(new Color(240, 240, 240));
 		btnRenombrar.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
@@ -105,7 +111,7 @@ public class VentanaSwingFTP extends JFrame {
 		btnBorrarCarpeta.setBounds(184, 300, 91, 54);
 		contentPane.add(btnBorrarCarpeta);
 		
-		JLabel lblServidor = new JLabel("Servidor:");
+		JLabel lblServidor = new JLabel(modelo.getTextoServidor());
 		lblServidor.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		lblServidor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblServidor.setBounds(51, 386, 86, 25);
@@ -116,7 +122,7 @@ public class VentanaSwingFTP extends JFrame {
 		lblIpServer.setBounds(155, 386, 120, 25);
 		contentPane.add(lblIpServer);
 		
-		JLabel lblUsuario = new JLabel("Usuario:");
+		JLabel lblUsuario = new JLabel(modelo.getTextoUsuario());
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		lblUsuario.setBounds(51, 428, 86, 25);
@@ -127,7 +133,7 @@ public class VentanaSwingFTP extends JFrame {
 		lblUsuarioNombre.setBounds(155, 428, 120, 25);
 		contentPane.add(lblUsuarioNombre);
 		
-		JLabel lblDirectorio = new JLabel("Archivo:");
+		JLabel lblDirectorio = new JLabel(modelo.getTextoDirActual());
 		lblDirectorio.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		lblDirectorio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDirectorio.setBounds(323, 10, 158, 34);
@@ -145,7 +151,7 @@ public class VentanaSwingFTP extends JFrame {
 		listArchivos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		contentPane.add(listArchivos);
 		
-		JLabel lblDirActual = new JLabel("Directorio Actual:");
+		JLabel lblDirActual = new JLabel(modelo.getTextoDirActual());
 		lblDirActual.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		lblDirActual.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDirActual.setBounds(323, 54, 158, 34);
@@ -165,7 +171,7 @@ public class VentanaSwingFTP extends JFrame {
 		panel_1.setBounds(323, 10, 474, 79);
 		contentPane.add(panel_1);
 		
-		btnVolver = new JButton("Volver");
+		btnVolver = new JButton(modelo.getTextoVolver());
 		btnVolver.setBackground(new Color(240, 240, 240));
 		btnVolver.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		btnVolver.setBounds(485, 463, 85, 32);

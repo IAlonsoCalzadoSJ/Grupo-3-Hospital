@@ -39,6 +39,7 @@ public class BajarArchivo implements ActionListener {
 
 		if (!modelo.getFicheroSelec().equals("")) {
 			bajarArchivo(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
+			modelo.setFicheroSelec("");
 		};
 
 	}

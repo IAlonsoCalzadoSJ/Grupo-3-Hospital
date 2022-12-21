@@ -2,6 +2,7 @@ package controladores;
 
 import org.apache.commons.net.ftp.FTPClient;
 
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import ftp.VistaFTP;
 import modelo.ConexionFtp;
@@ -12,13 +13,14 @@ public class ControladorMenuEventos {
 	private static ConexionFtp modelo;
 	static FTPClient cliente = new FTPClient();
 	private static ControladorLista controlLista;
+	private static Usuario usuario;
 	
 	public ControladorMenuEventos() {
 		vista = new VentanaSwingFTP();
 		modelo = new ConexionFtp();
 		
 		vista.setVisible(true);
-		controlLista = new ControladorLista(vista,modelo,cliente);
+		controlLista = new ControladorLista(vista,modelo,cliente,usuario);
 		eventos();
 	}
 

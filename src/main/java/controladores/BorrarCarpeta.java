@@ -30,13 +30,13 @@ public class BorrarCarpeta implements ActionListener {
 		String nombreCarpeta = JOptionPane.showInputDialog(vista,"Introduce nombre de carpeta a borrar");
 		if(!(nombreCarpeta == null)) {
 			String directorio = modelo.getDirecSelec();
-			
-			if(!modelo.getDirecSelec().equals("/")) 
+						if(!modelo.getDirecSelec().equals("/")) 
 				directorio = directorio+"/";
+				
 			directorio += nombreCarpeta.trim();
-			
 			try {
-				if(cliente.removeDirectory(directorio)) {
+				cliente.changeToParentDirectory();
+				if(cliente.removeDirectory(modelo.getDirecSelec())) {
 					JOptionPane.showMessageDialog(vista, "Carpeta Borrada Correctamente");
 					cliente.changeWorkingDirectory(modelo.getDirecSelec());
 					FTPFile[] lista = null;
@@ -49,7 +49,7 @@ public class BorrarCarpeta implements ActionListener {
 				e2.printStackTrace();
 			}
 		}
-
+		JOptionPane.showMessageDialog(vista, "Debe introducir un Nombre válido");
 	}
 
 }

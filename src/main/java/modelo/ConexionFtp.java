@@ -11,6 +11,18 @@ public class ConexionFtp {
 	static String direcSelec = direcInicial;
 	static String ficheroSelec = "";
 	
+	int numeroBotones = 7;
+	
+	String textoSubir = "Subir Archivo";
+	String textoBajar = "Bajar Archivo";
+	String textoBorrar = "Borrar Archivo";
+	String textoRenombrar = "Renombrar";
+	String textoVolver = "Volver";
+	String textoServidor = "Servidor: ";
+	String textoArchivo = "Archivo: ";
+	String textoDirActual = "Directorio Actual: ";
+	String textoUsuario = "Usuario: ";
+	
 	public ConexionFtp() {
 		
 	}
@@ -77,6 +89,86 @@ public class ConexionFtp {
 
 	public static void setFicheroSelec(String ficheroSelec) {
 		ConexionFtp.ficheroSelec = ficheroSelec;
+	}
+
+	public int getNumeroBotones() {
+		return numeroBotones;
+	}
+
+	public void setNumeroBotones(int numeroBotones) {
+		this.numeroBotones = numeroBotones;
+	}
+
+	public String getTextoSubir() {
+		return textoSubir;
+	}
+
+	public void setTextoSubir(String textoSubir) {
+		this.textoSubir = textoSubir;
+	}
+
+	public String getTextoBajar() {
+		return textoBajar;
+	}
+
+	public void setTextoBajar(String textoBajar) {
+		this.textoBajar = textoBajar;
+	}
+
+	public String getTextoBorrar() {
+		return textoBorrar;
+	}
+
+	public void setTextoBorrar(String textoBorrar) {
+		this.textoBorrar = textoBorrar;
+	}
+
+	public String getTextoRenombrar() {
+		return textoRenombrar;
+	}
+
+	public void setTextoRenombrar(String textoRenombrar) {
+		this.textoRenombrar = textoRenombrar;
+	}
+
+	public String getTextoVolver() {
+		return textoVolver;
+	}
+
+	public void setTextoVolver(String textoVolver) {
+		this.textoVolver = textoVolver;
+	}
+
+	public String getTextoServidor() {
+		return textoServidor;
+	}
+
+	public void setTextoServidor(String textoServidor) {
+		this.textoServidor = textoServidor;
+	}
+
+	public String getTextoArchivo() {
+		return textoArchivo;
+	}
+
+	public void setTextoArchivo(String textoArchivo) {
+		this.textoArchivo = textoArchivo;
+	}
+
+	public String getTextoDirActual() {
+		return textoDirActual;
+	}
+
+	public void setTextoDirActual(String textoDirActual) {
+		this.textoDirActual = textoDirActual;
+	}
+
+	public String getTextoUsuario() {
+		return textoUsuario;
+	}
+
+	public void setTextoUsuario(String textoUsuario) {
+		this.textoUsuario = textoUsuario;
 	}
 	
 	

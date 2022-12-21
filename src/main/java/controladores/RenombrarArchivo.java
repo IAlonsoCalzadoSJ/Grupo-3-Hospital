@@ -33,10 +33,11 @@ public class RenombrarArchivo implements ActionListener {
 		if((!modelo.getDirecSelec().equals("/"))) {
 			directorio = directorio;
 		}
-		if((!modelo.getFicheroSelec().equals("/"))) {
+		if((!modelo.getFicheroSelec().equals(""))) {
 			renombrarArchivo(directorio+modelo.getFicheroSelec(),modelo.getFicheroSelec());
+			modelo.setFicheroSelec("");
 		}
-
+		
 	}
 
 	private void renombrarArchivo(String string, String ficheroSelec) {
@@ -60,7 +61,6 @@ public class RenombrarArchivo implements ActionListener {
 				// TODO: handle exception
 			}
 		}
-		
 		
 	}
 

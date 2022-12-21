@@ -19,7 +19,8 @@ public class EventoListaArchivos extends MouseAdapter implements ListSelectionLi
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
-	
+	private String fic;
+	private String click;
 
 	public EventoListaArchivos(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo,
 			ControladorLista controlLista) {
@@ -30,13 +31,16 @@ public class EventoListaArchivos extends MouseAdapter implements ListSelectionLi
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
+			
 		if (e.getValueIsAdjusting()) {
 			
-			String ficSelec = "";
-			String fic = vista.getListArchivos().getSelectedValue().toString();
 			
+			String ficSelec = "";
+			fic = vista.getListArchivos().getSelectedValue().toString();
+
+			// Lista Archivos Raíz
 			if (vista.getListArchivos().getSelectedIndex() == 0) {
-				
+
 				if (!fic.equals(modelo.getDirecInicial())) {
 					try {
 						cliente.changeToParentDirectory();
@@ -45,56 +49,72 @@ public class EventoListaArchivos extends MouseAdapter implements ListSelectionLi
 						cliente.changeWorkingDirectory(modelo.getDirecSelec());
 						lista = cliente.listFiles();
 						controlLista.llenarLista(lista, modelo.getDirecSelec());
+						
 					} catch (IOException e2) {
 						// TODO: handle exception
 					}
 				}
 			} else {
-				// Directorio
+
+				// Directorio y Subdirectorios
 				if (fic.substring(0, 6).equals("(DIR) ")) {
-					try {
-						fic = fic.substring(6);
-						String otroSelec = "";
-						if (modelo.getDirecSelec().equals("/")) {
-							otroSelec = modelo.getDirecSelec() + fic;
-							modelo.setDirecSelec(otroSelec);
-						} else {
-							otroSelec = modelo.getDirecSelec() + "/" + fic;
-							modelo.setDirecSelec(otroSelec);
-						}
-						FTPFile[] lista = null;
-						cliente.changeWorkingDirectory(otroSelec);
-						lista = cliente.listFiles();
-						vista.getLblRutaDirectorio().setText(fic + " - " + lista.length + " Ficheros.");
-						modelo.setDirecSelec(otroSelec);
-						vista.getLblRutaDirActual().setText("/" + modelo.getDirecSelec());
-						controlLista.llenarLista(lista, modelo.getDirecSelec());
-						
-					} catch (IOException e2) {
-						// TODO: handle exception
-					}
-				} else {
-					// Fichero
-					ficSelec = modelo.getDirecSelec();
+					fic = fic.substring(6);
+					String otroSelec = "";
 					if (modelo.getDirecSelec().equals("/")) {
-						ficSelec += fic;
+						otroSelec = modelo.getDirecSelec() + fic;
+						modelo.setDirecSelec(otroSelec);
 					} else {
-						ficSelec += "/" + fic;
+						otroSelec = modelo.getDirecSelec() + "/" + fic;
+						modelo.setDirecSelec(otroSelec);
 					}
-					ficSelec = fic;
-					vista.getLblRutaDirectorio().setText(fic);
+//					click = vista.getListArchivos().getSelectedValue().toString();
+//					if (click.contains(fic)) {
+//						vista.getListArchivos().addMouseListener(new MouseAdapter() {
+//							public void mouseClicked(MouseEvent evt) {
+//								if (evt.getClickCount() == 2) {
+//									try {
+//										desplegarLista(modelo.getDirecSelec(), fic, cliente);
+//									} catch (IOException e) {
+//										// TODO Auto-generated catch block
+//										e.printStackTrace();
+//									}
+//								}
+//							}
+//						});
+					try {
+						//Metodo desplegar Lista
+						desplegarLista(modelo.getDirecSelec(), fic, cliente);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					} else {
+
+						// Fichero
+						ficSelec = modelo.getDirecSelec();
+						if (modelo.getDirecSelec().equals("/")) {
+							ficSelec += fic;
+						} else {
+							ficSelec += "/" + fic;
+						}
+						ficSelec = fic;
+						vista.getLblRutaDirectorio().setText(fic);
+						vista.getLblRutaDirActual().setText(modelo.getDirecSelec());
+						modelo.setFicheroSelec(ficSelec);
+					}
 					vista.getLblRutaDirActual().setText(modelo.getDirecSelec());
-					modelo.setFicheroSelec(ficSelec);
 				}
-				vista.getLblRutaDirActual().setText(modelo.getDirecSelec());
 			}
-		}
+		
 	}
-	public void mouseClicked(MouseEvent evt) {
-		if(evt.getClickCount() == 2) {
-			
-		}
+
+	private void desplegarLista(String otroSelec, String fic, FTPClient cliente) throws IOException {
+		FTPFile[] lista = null;
+		cliente.changeWorkingDirectory(otroSelec);
+		lista = cliente.listFiles();
+		vista.getLblRutaDirectorio().setText(fic + " - " + lista.length + " Ficheros.");
+		modelo.setDirecSelec(otroSelec);
+		vista.getLblRutaDirActual().setText("/" + modelo.getDirecSelec());
+		controlLista.llenarLista(lista, modelo.getDirecSelec());
 	}
-	
-	
 }

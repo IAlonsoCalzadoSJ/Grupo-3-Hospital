@@ -8,6 +8,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import ftp.VistaFTP;
 import modelo.ConexionFtp;
@@ -17,11 +18,13 @@ public class ControladorLista {
 	private VentanaSwingFTP vista;
 	private ConexionFtp modelo;
 	private FTPClient cliente;
+	private Usuario usuario;
 	
-	public ControladorLista(VentanaSwingFTP vista2, ConexionFtp modelo, FTPClient cliente) {
+	public ControladorLista(VentanaSwingFTP vista2, ConexionFtp modelo, FTPClient cliente, Usuario usuario) {
 		this.cliente = cliente;
 		this.modelo = modelo;
 		this.vista = vista2;
+		this.usuario = usuario;
 		
 		eventoListaArchivos();
 	}
@@ -29,6 +32,7 @@ public class ControladorLista {
 	private void eventoListaArchivos() {
 		cliente.setAutodetectUTF8(true);
 		try {
+			//Conectarse con el servidor FTP
 			cliente.connect(modelo.getServidor(),modelo.getPuerto());
 			
 			int respuesta = cliente.getReplyCode();
@@ -44,10 +48,11 @@ public class ControladorLista {
 				System.out.println("Las credenciales son inválidas");
 				cliente.disconnect();
 			}
-			
+			//Establece el directorio actual
 			cliente.changeWorkingDirectory(modelo.getDirecInicial());
 			FTPFile[] files = cliente.listFiles();
 			
+			//Saca listado de todos los archivos y carpetas del directorio actual
 			llenarLista(files, modelo.getDirecInicial());
 			
 			vista.getLblIpServer().setText(modelo.getServidor());
@@ -64,7 +69,7 @@ public class ControladorLista {
 		if(files == null) return;
 		
 		DefaultListModel modeloLista = new DefaultListModel();
-		modeloLista = new DefaultListModel();
+//		modeloLista = new DefaultListModel();
 		
 		vista.getListArchivos().removeAll();
 		
