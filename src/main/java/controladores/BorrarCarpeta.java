@@ -38,20 +38,16 @@ public class BorrarCarpeta implements ActionListener {
 			if (!nombreCarpeta.isEmpty()) {
 				try {
 					if (cliente.printWorkingDirectory().equals(modelo.getDirecSelec())) {
-						cliente.changeToParentDirectory();
-						modelo.setDirecSelec(cliente.printWorkingDirectory());
-						FTPFile[] lista = null;
-						lista = cliente.listFiles();
-						controlLista.llenarLista(lista, modelo.getDirecSelec());
-						borrarCarpeta(nombreCarpeta, directorio);
-					} else {
+//						cliente.changeToParentDirectory();
+//						modelo.setDirecSelec(cliente.printWorkingDirectory());
+//						FTPFile[] lista = null;
+//						lista = cliente.listFiles();
+//						controlLista.llenarLista(lista, modelo.getDirecSelec());
 						borrarCarpeta(directorio, nombreCarpeta);
 					}
-
 				} catch (IOException e2) {
 					e2.printStackTrace();
 				}
-
 			} else {
 				JOptionPane.showMessageDialog(vista, "Debes introducir nombre válido");
 			}
@@ -59,8 +55,8 @@ public class BorrarCarpeta implements ActionListener {
 	}
 
 	private void borrarCarpeta(String directorio, String nombreCarpeta) throws HeadlessException, IOException {
-		
-		if (cliente.removeDirectory(directorio)) {
+
+		if (cliente.removeDirectory(nombreCarpeta)) {
 			JOptionPane.showMessageDialog(vista, "Carpeta " + directorio + " Borrada Correctamente");
 			cliente.changeWorkingDirectory(modelo.getDirecSelec());
 			FTPFile[] lista = null;

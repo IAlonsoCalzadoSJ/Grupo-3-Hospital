@@ -14,7 +14,7 @@ public class ControladorMenuEventos {
 	private static ConexionFtp modelo;
 	static FTPClient cliente = new FTPClient();
 	private static ControladorLista controlLista;
-	private static Usuario usuario;
+	private Usuario usuario;
 	private DBConnection conexion;
 	
 	public ControladorMenuEventos() {

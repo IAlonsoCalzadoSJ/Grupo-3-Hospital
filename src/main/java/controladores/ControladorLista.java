@@ -3,6 +3,7 @@ package controladores;
 import java.awt.Color;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -49,6 +50,24 @@ public class ControladorLista {
 				cliente.disconnect();
 			}
 			//Establece el directorio actual
+			switch (usuario.getGroup()) {
+			case 0:
+				if(usuario.isLeerAjena()) {
+					cliente.changeWorkingDirectory(modelo.getDirecInicial()+usuario.getDoctor()+"/pacientes/");
+				}else {
+					cliente.changeWorkingDirectory(modelo.getDirecInicial()+usuario.getDoctor()+"/pacientes/"+usuario.getUser()+"/");
+				}
+				break;
+
+			case 1:
+				if(usuario.isLeerAjena()) {
+					cliente.changeWorkingDirectory(modelo.getDirecInicial());
+				}else {
+					cliente.changeWorkingDirectory(modelo.getDirecInicial()+usuario.getDoctor()+"/");
+				}
+				break;
+			}
+			
 			cliente.changeWorkingDirectory(modelo.getDirecInicial());
 			FTPFile[] files = cliente.listFiles();
 			
@@ -58,6 +77,16 @@ public class ControladorLista {
 			vista.getLblIpServer().setText(modelo.getServidor());
 			vista.getLblUsuarioNombre().setText(modelo.getUser());
 			vista.getLblRutaDirectorio().setText(modelo.getDirecInicial());
+			
+			if(!usuario.isModificarPropia()) {
+				for (JButton boton : vista.getBotones()) {
+					if(!boton.getText().equals("Subir Archivo")) {
+						boton.setEnabled(false);
+						boton.setVisible(false);
+					}
+				}
+				
+			}
 
 			
 		} catch (Exception e) {
