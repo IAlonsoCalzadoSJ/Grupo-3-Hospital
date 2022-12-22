@@ -3,20 +3,18 @@
  */
 package common;
 
-import javax.mail.internet.InternetAddress;
-
 /**
  * @author Israel
  *
  */
 public class Usuario {
-	private InternetAddress[] mail;
+	private String mail;
 	private int group;
 	private String doctor;
 	private boolean leerAjena;
 	private boolean modificarPropia;
 	
-	public Usuario(InternetAddress[] mail, int group, String doctor, boolean leerAjena, boolean modificarPropia) {
+	public Usuario(String mail, int group, String doctor, boolean leerAjena, boolean modificarPropia) {
 		super();
 		this.mail = mail;
 		this.group = group;
@@ -25,7 +23,7 @@ public class Usuario {
 		this.modificarPropia = modificarPropia;
 	}
 
-	public InternetAddress[] getMail() {
+	public String getMail() {
 		return mail;
 	}
 

@@ -18,7 +18,7 @@ public class CrearCarpeta implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
-	
+
 	public CrearCarpeta(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
 		this.cliente = cliente;
 		this.vista = vista;
@@ -27,29 +27,40 @@ public class CrearCarpeta implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		String nombreCarpeta = JOptionPane.showInputDialog(vista,"Introduce nombre de carpeta");
-		if(!(nombreCarpeta == null)) {
+		String nombreCarpeta = JOptionPane.showInputDialog(vista, "Introduce nombre de carpeta");
+		if (!(nombreCarpeta == null)) {
 			String directorio = modelo.getDirecSelec();
-			if(!modelo.getDirecSelec().equals("/")) 
-				directorio = directorio+"/";
+			if (!modelo.getDirecSelec().equals("/"))
+				directorio = directorio + "/";
 			directorio += nombreCarpeta.trim();
-			try {
-				if(cliente.makeDirectory(directorio)) {
-					JOptionPane.showMessageDialog(vista, "Carpeta Creada Correctamente");
-					cliente.changeWorkingDirectory(modelo.getDirecSelec());
-					FTPFile[] lista = null;
-					lista = cliente.listFiles();
-					controlLista.llenarLista(lista, modelo.getDirecSelec());
-				}else {
-					JOptionPane.showMessageDialog(vista, "No se ha podido crear la carpeta");
+			if (!(nombreCarpeta.isEmpty())) {
+				boolean especial = false;
+				String[] caractEspeciales = { "/", "\"", ":", "@", "*", "?", "<", ">", "|" };
+				for (String s : caractEspeciales) {
+					if (nombreCarpeta.contains(s)) {
+						especial = true;
+					}
 				}
-			} catch (IOException e2) {
-				e2.printStackTrace();
+				if (!especial) {
+					try {
+						if (cliente.makeDirectory(directorio)) {
+							JOptionPane.showMessageDialog(vista, "Carpeta Creada Correctamente");
+							cliente.changeWorkingDirectory(modelo.getDirecSelec());
+							FTPFile[] lista = null;
+							lista = cliente.listFiles();
+							controlLista.llenarLista(lista, modelo.getDirecSelec());
+						} else {
+							JOptionPane.showMessageDialog(vista, "No se ha podido crear la carpeta");
+						}
+					} catch (IOException e2) {
+						e2.printStackTrace();
+					}
+				} else {
+					JOptionPane.showMessageDialog(vista, "No se admiten carácteres especiales.");
+				}
+			}else {
+				JOptionPane.showMessageDialog(vista, "Debe introducir un nombre válido.");
 			}
-		}else {
-			JOptionPane.showMessageDialog(vista, "Introduce un nombre válido");
 		}
-		
 	}
-
 }

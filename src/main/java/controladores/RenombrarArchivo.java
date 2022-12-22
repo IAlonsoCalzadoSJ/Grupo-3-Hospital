@@ -18,7 +18,7 @@ public class RenombrarArchivo implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
-	
+
 	public RenombrarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo,
 			ControladorLista controlLista) {
 		this.vista = vista;
@@ -29,41 +29,41 @@ public class RenombrarArchivo implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		String directorio = modelo.getDirecSelec();
-		
-		if((!modelo.getDirecSelec().equals("/"))) {
+
+		if ((!modelo.getDirecSelec().equals("/"))) {
 			directorio = directorio;
 		}
-		if((!modelo.getFicheroSelec().equals(""))) {
-			renombrarArchivo(directorio+modelo.getFicheroSelec(),modelo.getFicheroSelec());
-			modelo.setFicheroSelec("");
+		if ((!modelo.getFicheroSelec().equals(""))) {
+			renombrarArchivo(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
 		}
-		
+
 	}
 
 	private void renombrarArchivo(String string, String ficheroSelec) {
-		String nombreNuevo = JOptionPane.showInputDialog(null,"Escribe nombre nuevo de fichero");
-		if(!(nombreNuevo.isEmpty())) {
-			try {
-				nombreNuevo.trim();
-				cliente.setFileType(FTP.BINARY_FILE_TYPE);
-				String extension = ficheroSelec.substring(ficheroSelec.lastIndexOf('.'));
-				if(cliente.rename(ficheroSelec, nombreNuevo+extension)) {
-					JOptionPane.showMessageDialog(vista, "Archivo Renombrado Correctamente");
-					cliente.changeWorkingDirectory(modelo.getDirecSelec());
-					FTPFile[] lista = null;
-					lista = cliente.listFiles();
-					controlLista.llenarLista(lista, modelo.getDirecSelec());
-				}else {
-					JOptionPane.showMessageDialog(null, "No se ha podido renombrar el archivo "+ficheroSelec);
+		String nombreNuevo = JOptionPane.showInputDialog(null, "Escribe nombre nuevo del fichero " + ficheroSelec);
+		if (!(nombreNuevo == null)) {
+			if (!(nombreNuevo.isEmpty() || nombreNuevo.length()<2)) {
+				try {
+					nombreNuevo.trim();
+					cliente.setFileType(FTP.BINARY_FILE_TYPE);
+					String extension = ficheroSelec.substring(ficheroSelec.lastIndexOf('.'));
+					if (cliente.rename(ficheroSelec,nombreNuevo.concat(extension))) {
+						JOptionPane.showMessageDialog(vista, "Archivo Renombrado Correctamente");
+						cliente.changeWorkingDirectory(modelo.getDirecSelec());
+						FTPFile[] lista = null;
+						lista = cliente.listFiles();
+						controlLista.llenarLista(lista, modelo.getDirecSelec());
+					} else {
+						JOptionPane.showMessageDialog(null, "No se ha podido renombrar el archivo " + ficheroSelec);
+					}
+
+				} catch (Exception e) {
+					// TODO: handle exception
 				}
-				
-			} catch (Exception e) {
-				// TODO: handle exception
+			}else {
+				JOptionPane.showMessageDialog(vista, "Debe tener un nombre válido. (Mín: 2 Caracteres).");
 			}
-		}else {
-			JOptionPane.showMessageDialog(vista, "Debes introducir un nombre válido");
 		}
-		
 	}
 
 }
