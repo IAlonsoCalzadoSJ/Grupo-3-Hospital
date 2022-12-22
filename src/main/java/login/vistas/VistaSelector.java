@@ -57,8 +57,8 @@ public class VistaSelector extends JFrame {
 		botones.get(0).setMinimumSize(new Dimension(40, 20));
 		botones.get(0).setMaximumSize(new Dimension(40, 20));
 		botones.get(0).setMargin(new Insets(5, 5, 5, 5));
-		botones.get(0).setBackground(Color.ORANGE);
-		botones.get(0).setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.get(0).setBackground(Color.LIGHT_GRAY);
+		botones.get(0).setFont(new Font(ModeloLoginSelector.getCfgfuentevistaselector(), Font.PLAIN, 40));
 		GroupLayout gl_mailPanel = new GroupLayout(mailPanel);
 		gl_mailPanel.setHorizontalGroup(gl_mailPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_mailPanel.createSequentialGroup().addContainerGap()
@@ -73,14 +73,14 @@ public class VistaSelector extends JFrame {
 		JPanel ftpPanel = new JPanel();
 		ftpPanel.setBackground(new Color(0, 128, 255));
 
-		botones.add(new JButton("MANUAL"));
+		botones.add(new JButton(ModeloLoginSelector.getTxtmanual()));
 		botones.get(1).setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		botones.get(1).setPreferredSize(new Dimension(40, 20));
 		botones.get(1).setMinimumSize(new Dimension(40, 20));
 		botones.get(1).setMaximumSize(new Dimension(40, 20));
 		botones.get(1).setMargin(new Insets(5, 5, 5, 5));
-		botones.get(1).setBackground(Color.ORANGE);
-		botones.get(1).setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.get(1).setBackground(Color.LIGHT_GRAY);
+		botones.get(1).setFont(new Font(ModeloLoginSelector.getCfgfuentevistaselector(), Font.PLAIN, 40));
 		GroupLayout gl_ftpPanel = new GroupLayout(ftpPanel);
 		gl_ftpPanel.setHorizontalGroup(gl_ftpPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ftpPanel.createSequentialGroup().addContainerGap()
@@ -138,7 +138,7 @@ public class VistaSelector extends JFrame {
 		JTextPane textoDescripcion = new JTextPane();
 		textoDescripcion.setPreferredSize(new Dimension(30, 20));
 		textoDescripcion.setEditable(false);
-		textoDescripcion.setFont(new Font("Sitka Text", Font.PLAIN, 15));
+		textoDescripcion.setFont(new Font(ModeloLoginSelector.getCfgfuentevistaselector(), Font.PLAIN, 15));
 		textoDescripcion.setText("Window used to lead the user to each process.\r\nPressing each button will do so.");
 		textoDescripcion.setBackground(new Color(0, 128, 255));
 		panelDescripcion.add(textoDescripcion);
@@ -154,10 +154,10 @@ public class VistaSelector extends JFrame {
 						Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
 
-		botones.add(new JButton("Volver"));
+		botones.add(new JButton(ModeloLoginSelector.getTxtvolver()));
 		botones.get(2).setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		botones.get(2).setBackground(Color.ORANGE);
-		botones.get(2).setFont(new Font("Sitka Text", Font.PLAIN, 20));
+		botones.get(2).setBackground(Color.LIGHT_GRAY);
+		botones.get(2).setFont(new Font(ModeloLoginSelector.getCfgfuentevistaselector(), Font.PLAIN, 20));
 		GroupLayout gl_volverPanel = new GroupLayout(volverPanel);
 		gl_volverPanel.setHorizontalGroup(gl_volverPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_volverPanel.createSequentialGroup().addContainerGap()
@@ -168,14 +168,14 @@ public class VistaSelector extends JFrame {
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		volverPanel.setLayout(gl_volverPanel);
 
-		botones.add(new JButton("FTP"));
+		botones.add(new JButton(ModeloLoginSelector.getTxtftp()));
 		botones.get(3).setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		botones.get(3).setPreferredSize(new Dimension(40, 20));
 		botones.get(3).setMinimumSize(new Dimension(40, 20));
 		botones.get(3).setMaximumSize(new Dimension(40, 20));
 		botones.get(3).setMargin(new Insets(5, 5, 5, 5));
-		botones.get(3).setBackground(Color.ORANGE);
-		botones.get(3).setFont(new Font("Sitka Text", Font.PLAIN, 40));
+		botones.get(3).setBackground(Color.LIGHT_GRAY);
+		botones.get(3).setFont(new Font(ModeloLoginSelector.getCfgfuentevistaselector(), Font.PLAIN, 40));
 		GroupLayout gl_manualPanel = new GroupLayout(manualPanel);
 		gl_manualPanel.setHorizontalGroup(gl_manualPanel.createParallelGroup(Alignment.TRAILING).addGroup(
 				Alignment.LEADING,

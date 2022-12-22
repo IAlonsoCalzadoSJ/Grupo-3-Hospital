@@ -73,48 +73,71 @@ public class VistaLogin extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel(ModeloLoginSelector.getTxtsufijocorreocorporativo());
 		GroupLayout gl_panelLogin = new GroupLayout(panelLogin);
-		gl_panelLogin.setHorizontalGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING).addGroup(gl_panelLogin
-				.createSequentialGroup()
-				.addGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelLogin.createSequentialGroup().addGap(10)
-								.addComponent(textEmail, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(lblNewLabel_1))
-						.addGroup(gl_panelLogin.createSequentialGroup().addGap(114).addComponent(loginEmail,
-								GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelLogin.createSequentialGroup().addContainerGap().addComponent(textPassw, 334,
-								334, 334))
-						.addGroup(gl_panelLogin.createSequentialGroup().addGap(116).addComponent(lblPassword,
-								GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap())
-				.addGroup(Alignment.TRAILING, gl_panelLogin.createSequentialGroup()
-						.addContainerGap(152, Short.MAX_VALUE).addComponent(loginBoton).addGap(141)));
-		gl_panelLogin.setVerticalGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelLogin.createSequentialGroup().addContainerGap()
-						.addComponent(loginEmail, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addGroup(gl_panelLogin.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textEmail, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1))
-						.addGap(35)
-						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(textPassw, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE).addGap(28)
-						.addComponent(loginBoton).addGap(26)));
+		gl_panelLogin.setHorizontalGroup(
+			gl_panelLogin.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelLogin.createSequentialGroup()
+					.addContainerGap(20, Short.MAX_VALUE)
+					.addGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelLogin.createSequentialGroup()
+							.addGroup(gl_panelLogin.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelLogin.createSequentialGroup()
+									.addGap(10)
+									.addComponent(textEmail, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblNewLabel_1))
+								.addGroup(gl_panelLogin.createSequentialGroup()
+									.addGap(114)
+									.addComponent(loginEmail, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panelLogin.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textPassw, 334, 334, 334))
+								.addGroup(gl_panelLogin.createSequentialGroup()
+									.addGap(116)
+									.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_panelLogin.createSequentialGroup()
+							.addComponent(loginBoton, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+							.addGap(147))))
+		);
+		gl_panelLogin.setVerticalGroup(
+			gl_panelLogin.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelLogin.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(loginEmail, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addGroup(gl_panelLogin.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textEmail, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_1))
+					.addGap(35)
+					.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textPassw, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(43)
+					.addComponent(loginBoton, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+					.addGap(35))
+		);
 		panelLogin.setLayout(gl_panelLogin);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(
 				new ImageIcon("D:\\alexs\\Descargas\\hospital logo doctor medical - Hecho con PosterMyWall (1).png"));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(lblNewLabel)
-						.addContainerGap(364, Short.MAX_VALUE))
-				.addComponent(panelLogin, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(panelLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE).addComponent(lblNewLabel)
-						.addGap(1)));
+					.addGap(10)
+					.addComponent(lblNewLabel)
+					.addContainerGap(364, Short.MAX_VALUE))
+				.addComponent(panelLogin, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panelLogin, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addGap(1))
+		);
 		contentPane.setLayout(gl_contentPane);
 		this.pack();
 	}
