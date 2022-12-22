@@ -32,18 +32,10 @@ public class Email extends JFrame {
 	private JTable table;
 	private ArrayList<JButton> botones= new ArrayList();
 
-	/**
-	 * Launch the application.
-	 */
-	
-
-	/**
-	 * Create the frame.
-	 */
 	public Email() {
 		setResizable(false);
 		setBackground(SystemColor.activeCaption);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1567, 824);
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBackground(SystemColor.activeCaption);
@@ -98,7 +90,6 @@ public class Email extends JFrame {
 		panel.setBackground(SystemColor.activeCaption);
 		
 		JPanel panelDescripcion = new JPanel();
-		
 		panelDescripcion.setBackground(SystemColor.activeCaption);
 		GroupLayout gl_panelPrincipal = new GroupLayout(panelPrincipal);
 		gl_panelPrincipal.setHorizontalGroup(
@@ -132,7 +123,6 @@ public class Email extends JFrame {
 		panelDescripcion.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JTextPane txtpnMainWindowOf = new JTextPane();
-		txtpnMainWindowOf.setEditable(false);
 		txtpnMainWindowOf.setBackground(SystemColor.activeCaption);
 		txtpnMainWindowOf.setFont(new Font("Sitka Text", Font.PLAIN, 15));
 		txtpnMainWindowOf.setText("Main window of the mail process.\r\nPressing the \"Refresh page\"  will reload all the emails.\r\nPressing the \"Write an email\" button will open a new window to do so.\r\nPressing the \"Go back\" button will lead you to the previous window.");

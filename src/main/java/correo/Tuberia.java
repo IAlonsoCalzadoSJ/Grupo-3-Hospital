@@ -79,7 +79,6 @@ public class Tuberia {
 					 a=quien[j].toString();
 					if(a.contains("<")||a.contains(">")) {
 					a=a.substring(a.indexOf("<")+1,a.indexOf(">"));
-					
 					}
 				}
 				Date fecha = messages[i].getSentDate();
