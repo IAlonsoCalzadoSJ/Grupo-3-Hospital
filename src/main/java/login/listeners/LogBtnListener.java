@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 
 import common.DBConnection;
@@ -37,16 +35,15 @@ public class LogBtnListener implements ActionListener {
 		String pass = String.valueOf(view.getPasswordText().getPassword());
 		if (!mail.isEmpty() && !pass.isEmpty()) {
 			try {
-				InternetAddress validMail[] = InternetAddress.parse(mail);
 				String sql = "select u.correo, u.permisos, u.doctor, p.leer_ajena, p.modificar_propia "
 						+ "from usuarios as u inner join permisos as p on u.permisos = p.id "
 						+ "where correo like ? and password = sha(?);";
 				conn.crearStatement(sql);
-				conn.agregarParametroStatement(1, mail);
+				conn.agregarParametroStatement(1, mail + ModeloLoginSelector.getTxtsufijocorreocorporativo());
 				conn.agregarParametroStatement(2, pass);
 				conn.realizarConsulta();
 				if (conn.getResultado().next()) {
-					Usuario user = new Usuario(mail, conn.getResultado().getInt("permisos"),
+					Usuario user = new Usuario(mail + ModeloLoginSelector.getTxtsufijocorreocorporativo(), mail, conn.getResultado().getInt("permisos"),
 							conn.getResultado().getString("doctor"), conn.getResultado().getBoolean("leer_ajena"),
 							conn.getResultado().getBoolean("modificar_propia"), pass);
 					view.setVisible(false);
@@ -55,10 +52,6 @@ public class LogBtnListener implements ActionListener {
 					JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrloginnousuariotexto(),
 							ModeloLoginSelector.getErrloginnousuariotitulo(), JOptionPane.WARNING_MESSAGE);
 				}
-			} catch (AddressException e2) {
-				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrlogincorreoerroneotexto(),
-						ModeloLoginSelector.getErrlogincorreoerroneotitulo(), JOptionPane.ERROR_MESSAGE);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				JOptionPane.showInternalMessageDialog(null, ModeloLoginSelector.getErrloginbdtexto(),

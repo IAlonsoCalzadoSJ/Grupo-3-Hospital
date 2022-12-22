@@ -3,23 +3,23 @@
  */
 package common;
 
-import javax.mail.internet.InternetAddress;
-
 /**
  * @author Israel
  *
  */
 public class Usuario {
 	private String mail;
+	private String user;
 	private int group;
 	private String doctor;
 	private boolean leerAjena;
 	private boolean modificarPropia;
 	private String password;
 	
-	public Usuario(String mail, int group, String doctor, boolean leerAjena, boolean modificarPropia, String password) {
+	public Usuario(String mail, String user, int group, String doctor, boolean leerAjena, boolean modificarPropia, String password) {
 		super();
 		this.mail = mail;
+		this.user = user;
 		this.group = group;
 		this.doctor = doctor;
 		this.leerAjena = leerAjena;
@@ -31,6 +31,10 @@ public class Usuario {
 		return mail;
 	}
 
+	public String getUser() {
+		return user;
+	}
+	
 	public int getGroup() {
 		return group;
 	}

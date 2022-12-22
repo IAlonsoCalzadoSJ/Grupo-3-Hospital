@@ -25,6 +25,7 @@ public class ModeloLoginSelector {
 	private static final String txtFtp = "FTP";
 	private static final String txtManual = "Manual";
 	private static final String txtVolver = "Volver";
+	private static final String txtSufijoCorreoCorporativo = ".sanjose@alumnado.fundacionloyola.net";
 	
 	public static String getTxtemail() {
 		return txtEmail;
@@ -76,5 +77,8 @@ public class ModeloLoginSelector {
 	}
 	public static String getErrloginnotexttexto() {
 		return errLoginNoTextTexto;
+	}
+	public static String getTxtsufijocorreocorporativo() {
+		return txtSufijoCorreoCorporativo;
 	}	
 }
