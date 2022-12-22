@@ -61,6 +61,7 @@ public class Tuberia {
 		if(inbox.hasNewMessages()||inbox.getNewMessageCount()!=0||msjs==0||inbox.getMessageCount()!=msjs) {
 			DefaultTableModel model = new DefaultTableModel(); 
 			e.getTable().setModel(model);
+			model.addColumn("Numero");
 			model.addColumn("Remitente");
 			model.addColumn("Asunto");
 			model.addColumn("Fecha/hora");
@@ -81,11 +82,12 @@ public class Tuberia {
 					a=a.substring(a.indexOf("<")+1,a.indexOf(">"));
 					}
 				}
+				int h= messages[i].getMessageNumber();
 				Date fecha = messages[i].getSentDate();
 				String asunto = messages[i].getSubject();
 				if(!a.equals("")) {
-				System.out.println(asunto + fecha + a);
-				model.addRow(new Object[] {a,messages[i].getSubject(),messages[i].getSentDate()});
+				//System.out.println(asunto + fecha + a);
+				model.addRow(new Object[] {h,a,messages[i].getSubject(),messages[i].getSentDate()});
 				
 				
 				}
@@ -95,7 +97,7 @@ public class Tuberia {
 			//	e.getTable().setModel(model);
 				}
 				
-				i=i-20;
+				
 			
 			}
 			
@@ -118,5 +120,12 @@ public class Tuberia {
 		}
 		msjs = inbox.getMessageCount();
 		tiempo=0;
+	}
+
+	public Message sacardatos(Integer integer) throws MessagingException {
+		// TODO Auto-generated method stub
+		Message messages2 = inbox2.getMessage(integer);
+		return messages2;
+		
 	}
 }

@@ -5,15 +5,18 @@ import java.awt.event.ActionListener;
 
 public class EventoBotonesLeer implements ActionListener {
 
-	EventoTabla eventoTabla = new EventoTabla(null);
-	
-	public EventoBotonesLeer(EventoTabla eventoTabla) {
+	EventoTabla eventoTabla;
+	VistaLeer leer;
+	public EventoBotonesLeer(EventoTabla eventoTabla, VistaLeer leer) {
 		this.eventoTabla = eventoTabla; 
+		this.leer=leer;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		eventoTabla.setDone(true);
+leer.dispose();
 
 	}
 

@@ -71,6 +71,7 @@ public class Email extends JFrame {
 		    }
 			
 		}; 
+		model.addColumn("Numero");
 		model.addColumn("Remitente");
 		model.addColumn("Asunto");
 		model.addColumn("Fecha/hora");
