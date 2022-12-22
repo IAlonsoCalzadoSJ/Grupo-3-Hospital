@@ -2,7 +2,6 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,25 +20,23 @@ public class BajarArchivo implements ActionListener {
 
 	private VentanaSwingFTP vista;
 	private FTPClient cliente;
-	private ConexionFtp modelo;
 	private ControladorLista controlLista;
 
 	public BajarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
 		this.cliente = cliente;
 		this.controlLista = controlLista;
 		this.cliente = cliente;
-		this.modelo = modelo;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		String directorio = modelo.getDirecSelec();
-		if (!modelo.getDirecSelec().equals("/")) {
+		String directorio = ConexionFtp.getDirecSelec();
+		if (!ConexionFtp.getDirecSelec().equals("/")) {
 			directorio = directorio + "/";
 		}
 		;
 
-		if (!modelo.getFicheroSelec().equals("")) {
-			bajarArchivo(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
+		if (!ConexionFtp.getFicheroSelec().equals("")) {
+			bajarArchivo(directorio + ConexionFtp.getFicheroSelec(), ConexionFtp.getFicheroSelec());
 		}
 		;
 
@@ -63,7 +60,7 @@ public class BajarArchivo implements ActionListener {
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(destino));
 				if (cliente.retrieveFile(nombreFichero, out)) {
 					JOptionPane.showMessageDialog(null, nombreFichero + " Se ha descargado.");
-					modelo.setFicheroSelec("");
+					ConexionFtp.setFicheroSelec("");
 				} else {
 					JOptionPane.showMessageDialog(null, nombreFichero + " No se ha podido descargar.");
 				}

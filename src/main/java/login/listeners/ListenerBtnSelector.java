@@ -10,6 +10,7 @@ import javax.swing.JButton;
 
 import common.DBConnection;
 import common.Usuario;
+import controladores.ControladorMenuEventos;
 import login.vistas.VistaLogin;
 import login.vistas.VistaSelector;
 
@@ -37,7 +38,7 @@ public class ListenerBtnSelector implements ActionListener {
 		switch (((JButton) e.getSource()).getText()) {
 		case "FTP":
 			view.setVisible(false);
-//			new ControladorMenuEventos(conn, user, view);
+			new ControladorMenuEventos(conn, user, view);
 			break;
 		case "eMail":
 			view.setVisible(false);
