@@ -51,7 +51,7 @@ public class BajarArchivo implements ActionListener {
 		String carpetaDestino = "";
 		JFileChooser chooser = new JFileChooser();
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		chooser.setDialogTitle("Selecciona la carpeta donde descargar el archivo");
+		chooser.setDialogTitle("Selecciona la carpeta donde descargar el archivo "+nombreFichero);
 
 		int val = chooser.showDialog(chooser, "Descargar");
 		if (val == JFileChooser.APPROVE_OPTION) {
