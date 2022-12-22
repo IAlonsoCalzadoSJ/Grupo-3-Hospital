@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import common.DBConnection;
 import common.Usuario;
 import controladores.ControladorMenuEventos;
+import correo.ControladorEmail;
 import login.vistas.VistaLogin;
 import login.vistas.VistaSelector;
 
@@ -42,7 +43,7 @@ public class ListenerBtnSelector implements ActionListener {
 			break;
 		case "eMail":
 			view.setVisible(false);
-//			new ControladorEmail(user, view);
+			new ControladorEmail(user, view);
 			break;
 		case "Manual":
 			view.setVisible(false);

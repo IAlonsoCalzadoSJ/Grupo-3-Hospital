@@ -9,6 +9,7 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.Store;
 
 import common.Usuario;
+import login.vistas.VistaSelector;
 
 public class EventoBotones implements ActionListener {
 	Email email;
@@ -16,9 +17,10 @@ public class EventoBotones implements ActionListener {
 	Store st;
 	Usuario u;
 	HiloTiempo h;
-
-	public EventoBotones(Email e, Tuberia t, Store st, Usuario u, HiloTiempo h) {
+	VistaSelector v;
+	public EventoBotones(Email e, Tuberia t, Store st, Usuario u, HiloTiempo h, VistaSelector v) {
 		// TODO Auto-generated constructor stub
+		this.v=v;
 		this.h = h;
 		this.u = u;
 		this.email = e;
@@ -55,6 +57,7 @@ public class EventoBotones implements ActionListener {
 			t.setVivo(false);
 			email.dispose();
 			h.stop();
+			v.setVisible(true);
 		}
 	}
 
