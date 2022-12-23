@@ -23,6 +23,7 @@ public ControladorEmail(Usuario u, VistaSelector view) {
 	
 	meterListeners();
 	e.setVisible(true);
+	
 }
 public void meterListeners(){
 	for(int i=0;i<e.getBotones().size();i++) {

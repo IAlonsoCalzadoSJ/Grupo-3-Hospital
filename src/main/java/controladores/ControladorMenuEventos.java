@@ -17,11 +17,14 @@ public class ControladorMenuEventos {
 	private static ControladorLista controlLista;
 	private Usuario usuario;
 	private DBConnection conexion;
+	private VistaSelector view;
 
 	public ControladorMenuEventos(DBConnection conn, Usuario user, VistaSelector view) {
 		vista = new VentanaSwingFTP();
 		modelo = new ConexionFtp();
 		conexion = conn;
+		this.view = view;
+		this.usuario = user;
 
 		vista.setVisible(true);
 		controlLista = new ControladorLista(vista, modelo, cliente, usuario);
@@ -52,7 +55,7 @@ public class ControladorMenuEventos {
 		vista.getBotones().get(5).addActionListener(new BorrarCarpeta(vista, cliente, modelo, controlLista));
 
 		// Evento Botón Volver FTP
-		vista.getBotones().get(6).addActionListener(new EventoVolver(vista, cliente));
+		vista.getBotones().get(6).addActionListener(new EventoVolver(vista, cliente, view));
 
 	}
 }
