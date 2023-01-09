@@ -4,6 +4,7 @@
 package common;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +87,20 @@ public class DBConnection {
 	public void agregarParametroStatement(int posicion, float parametro) {
 		try {
 			consultor.setFloat(posicion, parametro);
+		} catch (SQLException e) {
+			System.out.println("Error al agregar el parámetro seleccionado");
+		}
+	}
+	
+	/**
+	 * Agrega un parámetro date al PreparedStatement en la posición indicada.
+	 * @param posicion - int - Indica en que posición ha de agregarse el parámetro.
+	 * @param parametro - date - Parámetro a agregar al PreparedStatement.
+	 * @return 
+	 */
+	public void agregarParametroStatement(int posicion, Date parametro) {
+		try {
+			consultor.setDate(posicion, parametro);
 		} catch (SQLException e) {
 			System.out.println("Error al agregar el parámetro seleccionado");
 		}

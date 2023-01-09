@@ -1,8 +1,8 @@
 package controladores;
 
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -10,6 +10,8 @@ import javax.swing.event.ListSelectionListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
+import common.DBConnection;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -21,13 +23,17 @@ public class EventoListaArchivos extends MouseAdapter implements ListSelectionLi
 	private ControladorLista controlLista;
 	private String fic;
 	private String click;
+	private DBConnection conex;
+	private Usuario user;
 
 	public EventoListaArchivos(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo,
-			ControladorLista controlLista) {
+			ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.vista = vista;
 		this.cliente = cliente;
 		this.modelo = modelo;
 		this.controlLista = controlLista;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
@@ -48,7 +54,7 @@ public class EventoListaArchivos extends MouseAdapter implements ListSelectionLi
 						cliente.changeWorkingDirectory(modelo.getDirecSelec());
 						lista = cliente.listFiles();
 						controlLista.llenarLista(lista, modelo.getDirecSelec());
-
+						
 					} catch (IOException e2) {
 						// TODO: handle exception
 					}

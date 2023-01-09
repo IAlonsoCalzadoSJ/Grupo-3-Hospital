@@ -14,6 +14,9 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
+import common.DBConnection;
+import common.Libreria;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -23,12 +26,16 @@ public class SubirArchivo implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
+	private DBConnection conex;
+	private Usuario user;
 
-	public SubirArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
+	public SubirArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.cliente = cliente;
 		this.vista = vista;
 		this.modelo = modelo;
 		this.controlLista = controlLista;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -56,6 +63,7 @@ public class SubirArchivo implements ActionListener {
 		cliente.changeWorkingDirectory(modelo.getDirecSelec());
 		if (cliente.storeFile(nombreFichero, in)) {
 			JOptionPane.showMessageDialog(vista, nombreFichero + " Subido correctamente.");
+			Libreria.escribirLog(conex, user, user.getMail(), "subir archivo", nombreFichero);
 			FTPFile[] lista = null;
 			lista = cliente.listFiles();
 			controlLista.llenarLista(lista, modelo.getDirecSelec());
@@ -65,5 +73,7 @@ public class SubirArchivo implements ActionListener {
 		}
 		return correcto;
 	}
+	
+	
 
 }

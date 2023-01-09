@@ -9,6 +9,9 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
+import common.DBConnection;
+import common.Libreria;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -18,13 +21,17 @@ public class RenombrarArchivo implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
+	private DBConnection conex;
+	private Usuario user;
 
 	public RenombrarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo,
-			ControladorLista controlLista) {
+			ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.vista = vista;
 		this.cliente = cliente;
 		this.modelo = modelo;
 		this.controlLista = controlLista;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -35,6 +42,7 @@ public class RenombrarArchivo implements ActionListener {
 		}
 		if ((!modelo.getFicheroSelec().equals(""))) {
 			renombrarArchivo(directorio + modelo.getFicheroSelec(), modelo.getFicheroSelec());
+			Libreria.escribirLog(conex, user, user.getMail(), "renombrar archivo", ConexionFtp.getFicheroSelec());
 		}
 
 	}

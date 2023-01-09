@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
+import common.DBConnection;
+import common.Libreria;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -21,11 +24,15 @@ public class BajarArchivo implements ActionListener {
 	private VentanaSwingFTP vista;
 	private FTPClient cliente;
 	private ControladorLista controlLista;
+	private DBConnection conex;
+	private Usuario user;
 
-	public BajarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
+	public BajarArchivo(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.cliente = cliente;
 		this.controlLista = controlLista;
 		this.cliente = cliente;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -37,6 +44,8 @@ public class BajarArchivo implements ActionListener {
 
 		if (!ConexionFtp.getFicheroSelec().equals("")) {
 			bajarArchivo(directorio + ConexionFtp.getFicheroSelec(), ConexionFtp.getFicheroSelec());
+			Libreria.escribirLog(conex, user, user.getMail(), "bajar archivo", ConexionFtp.getFicheroSelec());
+			
 		}
 		;
 
