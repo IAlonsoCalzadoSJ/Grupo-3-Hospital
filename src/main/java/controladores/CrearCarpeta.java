@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
+import common.DBConnection;
+import common.Libreria;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -18,12 +21,16 @@ public class CrearCarpeta implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
+	private DBConnection conex;
+	private Usuario user;
 
-	public CrearCarpeta(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
+	public CrearCarpeta(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.cliente = cliente;
 		this.vista = vista;
 		this.modelo = modelo;
 		this.controlLista = controlLista;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -45,6 +52,7 @@ public class CrearCarpeta implements ActionListener {
 					try {
 						if (cliente.makeDirectory(directorio)) {
 							JOptionPane.showMessageDialog(vista, "Carpeta Creada Correctamente");
+							Libreria.escribirLog(conex, user, user.getMail(), "crear carpeta", directorio);
 							cliente.changeWorkingDirectory(modelo.getDirecSelec());
 							FTPFile[] lista = null;
 							lista = cliente.listFiles();

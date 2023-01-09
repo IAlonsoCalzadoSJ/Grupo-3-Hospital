@@ -1,7 +1,5 @@
 package controladores;
 
-import java.awt.Color;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
@@ -11,7 +9,6 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import common.Usuario;
 import ftp.VentanaSwingFTP;
-import ftp.VistaFTP;
 import modelo.ConexionFtp;
 
 public class ControladorLista {
@@ -51,6 +48,7 @@ public class ControladorLista {
 			}
 			// Establece el directorio actual
 			System.out.println(modelo.getDirecInicial());
+			modelo.setDirecInicial("/");
 			switch (usuario.getGroup()) {
 			case 0:
 				if (usuario.isLeerAjena()) {
@@ -74,6 +72,7 @@ public class ControladorLista {
 			System.out.println(modelo.getDirecInicial());
 			cliente.changeWorkingDirectory(modelo.getDirecInicial());
 			System.out.println(modelo.getDirecInicial());
+			modelo.setTextoDirActual(modelo.getDirecInicial());
 			FTPFile[] files = cliente.listFiles();
 
 			// Saca listado de todos los archivos y carpetas del directorio actual
@@ -85,7 +84,7 @@ public class ControladorLista {
 
 			if (!usuario.isModificarPropia()) {
 				for (JButton boton : vista.getBotones()) {
-					if (!boton.getText().equals("Subir Archivo")) {
+					if (!boton.getText().equals("Subir Archivo") && !boton.getText().equals("Volver")) {
 						boton.setEnabled(false);
 						boton.setVisible(false);
 					}
@@ -118,7 +117,7 @@ public class ControladorLista {
 
 		for (int i = 0; i < files.length; i++) {
 			if (!(files[i].getName()).equals(".") && !(files[i].getName()).equals("..")) {
-				String f = files[i].getName();
+				String f = files[i].getName();      
 				if (files[i].isDirectory()) {
 					f = "(DIR) " + f;
 				}
