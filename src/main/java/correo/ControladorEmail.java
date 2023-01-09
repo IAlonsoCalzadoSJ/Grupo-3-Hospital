@@ -1,6 +1,7 @@
 package correo;
 
 import common.Usuario;
+import login.vistas.VistaSelector;
 
 public class ControladorEmail {
 Email e;
@@ -8,7 +9,7 @@ HiloTiempo h;
 Tuberia t;
 ClienteCorreo c;
 Usuario u;
-public ControladorEmail(Usuario u) {
+public ControladorEmail(Usuario u, VistaSelector view) {
 	this.u=u;
 	 e= new Email();
 	 c= new ClienteCorreo(u);
