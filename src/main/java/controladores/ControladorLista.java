@@ -1,7 +1,5 @@
 package controladores;
 
-import java.awt.Color;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
@@ -11,7 +9,6 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import common.Usuario;
 import ftp.VentanaSwingFTP;
-import ftp.VistaFTP;
 import modelo.ConexionFtp;
 
 public class ControladorLista {

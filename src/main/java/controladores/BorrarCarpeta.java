@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
+import common.DBConnection;
+import common.Libreria;
+import common.Usuario;
 import ftp.VentanaSwingFTP;
 import modelo.ConexionFtp;
 
@@ -19,12 +22,16 @@ public class BorrarCarpeta implements ActionListener {
 	private FTPClient cliente;
 	private ConexionFtp modelo;
 	private ControladorLista controlLista;
+	private DBConnection conex;
+	private Usuario user;
 
-	public BorrarCarpeta(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista) {
+	public BorrarCarpeta(VentanaSwingFTP vista, FTPClient cliente, ConexionFtp modelo, ControladorLista controlLista, DBConnection conex, Usuario user) {
 		this.cliente = cliente;
 		this.vista = vista;
 		this.modelo = modelo;
 		this.controlLista = controlLista;
+		this.conex = conex;
+		this.user = user;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -58,6 +65,7 @@ public class BorrarCarpeta implements ActionListener {
 
 		if (cliente.removeDirectory(nombreCarpeta)) {
 			JOptionPane.showMessageDialog(vista, "Carpeta " + directorio + " Borrada Correctamente");
+			Libreria.escribirLog(conex, user, user.getMail(), "borrar carpeta", directorio);
 			cliente.changeWorkingDirectory(modelo.getDirecSelec());
 			FTPFile[] lista = null;
 			lista = cliente.listFiles();
