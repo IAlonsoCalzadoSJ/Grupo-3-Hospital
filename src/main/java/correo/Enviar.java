@@ -87,6 +87,7 @@ public class Enviar {
 			// message.addRecipient(Message.RecipientType.TO, new
 			// InternetAddress(e.getFieldPara().getText())); //Se podrían añadir varios de
 			// la misma manera
+			
 			message.setSubject(e.getFieldCabecera().getText());
 			message.addRecipients(Message.RecipientType.TO, e.getFieldPara().getText());
 			MimeBodyPart texto = new MimeBodyPart();
@@ -105,7 +106,13 @@ public class Enviar {
 			message.setContent(multiParte);
 			Transport transport = session.getTransport("smtp");
 			transport.connect("smtp.gmail.com", remitente, claveemail);
-			transport.sendMessage(message, message.getAllRecipients());
+			if(message.getContent().toString()==""||message.getAllRecipients()==null) {
+			System.out.print("vacio");
+			}
+			else {
+				e.dispose();
+				transport.sendMessage(message, message.getAllRecipients());
+			}
 			transport.close();
 		} catch (MessagingException me) {
 			me.printStackTrace(); // Si se produce un error

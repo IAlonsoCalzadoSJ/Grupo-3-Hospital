@@ -49,7 +49,7 @@ Enviar enviar;
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			ev.dispose();
+			//ev.dispose();
 			
 		}
 	}

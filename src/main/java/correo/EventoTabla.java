@@ -1,5 +1,6 @@
 package correo;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.mail.BodyPart;
@@ -40,13 +41,34 @@ public class EventoTabla implements ListSelectionListener {
 					
 						  
 							   for(int o=0;o<multi.getCount();o++) {
+								   
 								   BodyPart b=multi.getBodyPart(o);
-								 if(b.getContentType().equals("text/html"))
+								  // System.out.println("tipo:"+b.getContentType());
+								 if(b.getContentType().equals("text/html")) {
 								   System.out.print(multi.getCount()+"cuenta");
 									String hola=Jsoup.parse(b.getContent().toString()).text();
 									contenido=contenido+hola;
 									leer.getTable().setText(contenido);
 								  }
+							   else if(b.getContentType().contains(("multipart/alternative"))) {
+								   System.out.print("hay archivo adjuunto");
+								 // File f=(File) b.getContent();
+								     //System.out.print(f.getName());
+								   
+							   }
+							 /*  else if(b.getContentType().contains(("image/jpeg"))) {
+								   System.out.print("hay image");
+									   
+								   
+							   }*/
+								 
+							   else if(b.getContentType().equals("text/plain")) {
+								   String hola=b.getContent().toString();
+									contenido=contenido+hola;
+									leer.getTable().setText(contenido);
+							   }
+								   
+							   }
 						 
 							   
 							   
@@ -80,7 +102,9 @@ public class EventoTabla implements ListSelectionListener {
 				
 			}
 	}
-
+		else {
+			done=false;
+		}
 	}
 
 	public boolean isDone() {

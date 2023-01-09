@@ -51,7 +51,10 @@ public class Tuberia {
 			System.out.println("No INBOX");
 			System.exit(1);
 		}
+		
 		inbox.open(Folder.READ_ONLY);
+		Message[] ms = inbox.getMessages();
+		System.out.print("cuantos hay:"+inbox.getMessageCount()+"/"+ms.length);
 		inbox2=inbox;
 		correos(inbox);
 	}
@@ -97,7 +100,7 @@ public class Tuberia {
 			//	e.getTable().setModel(model);
 				}
 				
-				
+				i=i-20;
 			
 			}
 			
