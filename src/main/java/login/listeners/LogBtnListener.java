@@ -43,8 +43,13 @@ public class LogBtnListener implements ActionListener {
 				conn.agregarParametroStatement(2, pass);
 				conn.realizarConsulta();
 				if (conn.getResultado().next()) {
+					String doctor = "";
+					if(conn.getResultado().getString("doctor")!=null) {
+						doctor = conn.getResultado().getString("doctor").replace(".sanjose@alumnado.fundacionloyola.net", "");
+					}
+					
 					Usuario user = new Usuario(mail + ModeloLoginSelector.getTxtsufijocorreocorporativo(), mail, conn.getResultado().getInt("permisos"),
-							conn.getResultado().getString("doctor"), conn.getResultado().getBoolean("leer_ajena"),
+							doctor, conn.getResultado().getBoolean("leer_ajena"),
 							conn.getResultado().getBoolean("modificar_propia"), pass);
 					view.setVisible(false);
 					new MainSelector(conn, user, view);
