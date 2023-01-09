@@ -9,8 +9,10 @@ HiloTiempo h;
 Tuberia t;
 ClienteCorreo c;
 Usuario u;
+VistaSelector v;
 public ControladorEmail(Usuario u, VistaSelector view) {
 	this.u=u;
+	this.v=view;
 	 e= new Email();
 	 c= new ClienteCorreo(u);
 	 t= new Tuberia(e);
@@ -21,10 +23,11 @@ public ControladorEmail(Usuario u, VistaSelector view) {
 	
 	meterListeners();
 	e.setVisible(true);
+	
 }
 public void meterListeners(){
 	for(int i=0;i<e.getBotones().size();i++) {
-		e.getBotones().get(i).addActionListener(new EventoBotones(e,t,c.getSt(),u,h));
+		e.getBotones().get(i).addActionListener(new EventoBotones(e,t,c.getSt(),u,h,v));
 	}
 	e.getTable().getSelectionModel().addListSelectionListener(new EventoTabla(e.getTable(),t));
 	
