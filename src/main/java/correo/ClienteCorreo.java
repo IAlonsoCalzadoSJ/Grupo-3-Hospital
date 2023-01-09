@@ -54,8 +54,8 @@ public class ClienteCorreo {
 		prop.setProperty("mail.pop3.socketFactory.port", "995");
 
 		String host = "pop.gmail.com";
-		String username = "miguelangelmeridamedina.sanjose@alumnado.fundacionloyola.net";
-		String password = "12345678";
+		String username = u.getMail();
+		String password = u.getPassword();
 		String provider = "pop3";
 
 		try {
