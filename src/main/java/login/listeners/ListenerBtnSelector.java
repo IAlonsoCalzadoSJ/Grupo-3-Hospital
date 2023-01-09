@@ -41,7 +41,7 @@ public class ListenerBtnSelector implements ActionListener {
 			view.setVisible(false);
 			new ControladorMenuEventos(conn, user, view);
 			break;
-		case "eMail":
+		case "e-Mail":
 			view.setVisible(false);
 			new ControladorEmail(user, view);
 			break;
